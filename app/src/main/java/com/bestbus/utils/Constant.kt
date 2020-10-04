@@ -17,7 +17,6 @@ object Constant {
             return retrofit!!
         }
 
-    const val APP_SHARED_PREF = "BESTBUS2020"
     const val PREF_EMAIL = "PREF_EMAIL"
     const val PREF_PASSWORD = "PREF_PASSWORD"
     const val PREF_USER = "PREF_USER"

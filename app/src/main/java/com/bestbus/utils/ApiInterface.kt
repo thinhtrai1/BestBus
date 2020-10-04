@@ -1,8 +1,6 @@
 package com.bestbus.utils
 
-import com.bestbus.models.Ticket
-import com.bestbus.models.Tour
-import com.bestbus.models.User
+import com.bestbus.models.*
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -35,4 +33,10 @@ interface ApiInterface {
         @Field("paymentMethod") paymentMethod: String,
         @Field("paymentInformation") paymentInformation: String?,
         @Field("totalAmount") totalAmount: Int): Call<Ticket>
+
+    @GET("getDeal.php")
+    fun getDeal(): Call<ArrayList<Deal>>
+
+    @GET("getOffer.php")
+    fun getOffer(): Call<ArrayList<Offer>>
 }

@@ -1,11 +1,9 @@
 package com.bestbus.activities
 
 import android.app.Dialog
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
-import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -15,6 +13,7 @@ import com.bestbus.models.Ticket
 import com.bestbus.models.Tour
 import com.bestbus.models.User
 import com.bestbus.utils.Constant
+import com.bestbus.utils.SharedPreferenceHelper
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_payment.*
 import net.glxn.qrgen.android.QRCode
@@ -29,7 +28,7 @@ class PaymentActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
 
-        val user = Gson().fromJson(getSharedPreferences(Constant.APP_SHARED_PREF, Context.MODE_PRIVATE).getString(Constant.PREF_USER, ""), User::class.java)
+        val user = Gson().fromJson(SharedPreferenceHelper.instance.getString(Constant.PREF_USER), User::class.java)
         tvName.text = user.name
         tvEmail.text = user.email
         tvPhone.text = user.phone
@@ -37,7 +36,7 @@ class PaymentActivity : BaseActivity() {
         btnFinish.setOnClickListener {
             showLoading(true)
             val paymentMethod: String
-            var paymentInformation: String?
+            val paymentInformation: String?
             when {
                 edtDebit.text.toString().isNotBlank() -> {
                     paymentMethod = "DEBIT/CREDIT_CARD"
@@ -83,7 +82,7 @@ class PaymentActivity : BaseActivity() {
                             Email: ${user.email}
                             Phone: ${user.phone}
                             Bus ID: ${it.tourId}
-                            Seat: ${seat.substring(0, seat.lastIndex - 2)}
+                            Seat: ${seat.substring(0, seat.length - 2)}
                             From: ${tourData.fromCity}
                             To: ${tourData.toCity}
                             Start time: ${SimpleDateFormat("HH:mm", Locale.US).format(Date(tourData.startTime))}

@@ -25,8 +25,8 @@ class TourListAdapter (private val context: Context, private val mTours: ArrayLi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         mTours[position].let {
             holder.tvName.text = it.tourName
-            holder.tvPrice1.text = "$" + it.oldPrice
-            holder.tvPrice2.text = "$" + it.price
+            holder.tvPriceOld.text = "$" + it.oldPrice
+            holder.tvPrice.text = "$" + it.price
             val c = Calendar.getInstance()
             c.timeInMillis = it.startTime
             holder.tvStartTime.text = SimpleDateFormat("HH:mm", Locale.US).format(c.time)
@@ -42,13 +42,13 @@ class TourListAdapter (private val context: Context, private val mTours: ArrayLi
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var tvName: TextView = view.findViewById(R.id.tv_name)
-        var tvPrice1: TextView = view.findViewById(R.id.tv_price_1)
-        var tvPrice2: TextView = view.findViewById(R.id.tv_price_2)
-        var tvStartTime: TextView = view.findViewById(R.id.tv_start_time)
-        var tvTime: TextView = view.findViewById(R.id.tv_time)
-        var tvEndTime: TextView = view.findViewById(R.id.tv_end_time)
-        var tvFrom: TextView = view.findViewById(R.id.tv_from)
-        var tvTo: TextView = view.findViewById(R.id.tv_to)
+        var tvName: TextView = view.findViewById(R.id.tvName)
+        var tvPriceOld: TextView = view.findViewById(R.id.tvPriceOld)
+        var tvPrice: TextView = view.findViewById(R.id.tvPrice)
+        var tvStartTime: TextView = view.findViewById(R.id.tvStartTime)
+        var tvTime: TextView = view.findViewById(R.id.tvTime)
+        var tvEndTime: TextView = view.findViewById(R.id.tvEndTime)
+        var tvFrom: TextView = view.findViewById(R.id.tvFrom)
+        var tvTo: TextView = view.findViewById(R.id.tvTo)
     }
 }

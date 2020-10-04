@@ -1,5 +1,21 @@
 <resources>
     <string name="app_name">Best Bus</string>
-    <string name="sign_up"><u>Sign Up</u></string>
-    <string name="login"><u>Login</u></string>
+    <string name="login">Login</string>
+    <string name="register"><u>Register</u></string>
+    <string name="bestbus_cap">BESTBUS</string>
+    <string name="offers">Offers</string>
+    <string name="update_profile"><u>Update profile</u></string>
+    <string name="login_register"><u>Login/Register</u></string>
+    <string name="logout"><u>Logout</u></string>
+    <string name="change_password"><u>Change password</u></string>
+    <string name="best_deals">BEST DEALS</string>
+    <string name="discount_on">%1$s discount on</string>
+    <string name="departure_to_arrival">Departure to Arrival</string>
+    <string name="please_contact_to_admin">Please contact to admin for more information.\nBuy one and get one for free if you are a <b>WitBus</b> member.</string>
+    <string name="up_to">UP TO</string>
+    <string name="off">OFF</string>
+    <string name="today_only_enter_code">Today only when you enter this code.</string>
+    <string name="copy_code">COPY CODE</string>
+    <string name="offer_code_copied">Offer code copied</string>
+    <string name="coming_soon">Coming soon</string>
 </resources>

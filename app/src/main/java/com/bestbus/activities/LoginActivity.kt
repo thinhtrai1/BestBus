@@ -1,12 +1,12 @@
 package com.bestbus.activities
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.bestbus.R
 import com.bestbus.models.User
 import com.bestbus.utils.Constant
+import com.bestbus.utils.SharedPreferenceHelper
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
@@ -28,7 +28,7 @@ class LoginActivity : BaseActivity() {
                 isLogin = false
             } else {
                 btnLogin.text = "Login"
-                tvSignUp.text = getString(R.string.sign_up)
+                tvSignUp.text = getString(R.string.register)
                 edtName.visibility = View.GONE
                 isLogin = true
             }
@@ -46,12 +46,12 @@ class LoginActivity : BaseActivity() {
                     override fun onResponse(call: Call<User>, response: Response<User>) {
                         if (response.isSuccessful) {
                             response.body()?.let {
-                                getSharedPreferences(Constant.APP_SHARED_PREF, Context.MODE_PRIVATE).edit()
+                                SharedPreferenceHelper.instance
                                     .putString(Constant.PREF_EMAIL, it.email)
                                     .putString(Constant.PREF_PASSWORD, it.password)
                                     .putString(Constant.PREF_USER, Gson().toJson(it))
-                                    .apply()
-                                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                                startActivity(Intent(this@LoginActivity, HomeActivity::class.java)
+                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
                             }
                         } else {
                             showToast(response.errorBody()?.string())
@@ -69,12 +69,12 @@ class LoginActivity : BaseActivity() {
                     override fun onResponse(call: Call<User>, response: Response<User>) {
                         if (response.isSuccessful) {
                             response.body()?.let {
-                                getSharedPreferences(Constant.APP_SHARED_PREF, Context.MODE_PRIVATE).edit()
+                                SharedPreferenceHelper.instance
                                     .putString(Constant.PREF_EMAIL, it.email)
                                     .putString(Constant.PREF_PASSWORD, it.password)
                                     .putString(Constant.PREF_USER, Gson().toJson(it))
-                                    .apply()
-                                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                                startActivity(Intent(this@LoginActivity, HomeActivity::class.java)
+                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
                             }
                         } else {
                             showToast(response.errorBody()?.string())

@@ -8,17 +8,18 @@ import com.bestbus.adapters.TourListAdapter
 import com.bestbus.models.Tour
 import com.bestbus.utils.Constant
 import com.bestbus.utils.IOnItemClickListener
+import com.bestbus.utils.SharedPreferenceHelper
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_tour_list.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import kotlin.collections.ArrayList
 
-class MainActivity : BaseActivity() {
+class TourListActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_tour_list)
 
         showLoading(true)
         Constant.client.getTour().enqueue(object : Callback<ArrayList<Tour>> {
@@ -29,11 +30,15 @@ class MainActivity : BaseActivity() {
 
             override fun onResponse(call: Call<ArrayList<Tour>>, response: Response<ArrayList<Tour>>) {
                 if (response.isSuccessful) {
-                    rcvTourList.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
-                    rcvTourList.adapter = TourListAdapter(this@MainActivity, response.body()!!, object : IOnItemClickListener {
+                    rcvTourList.layoutManager = LinearLayoutManager(this@TourListActivity, LinearLayoutManager.VERTICAL, false)
+                    rcvTourList.adapter = TourListAdapter(this@TourListActivity, response.body()!!, object : IOnItemClickListener {
                         override fun onClick(position: Int) {
-                            startActivity(Intent(this@MainActivity, SelectSeatActivity::class.java)
-                                .putExtra("tour", Gson().toJson(response.body()!![position])))
+                            if (SharedPreferenceHelper.instance.getString(Constant.PREF_USER) != null) {
+                                startActivity(
+                                    Intent(this@TourListActivity, SelectSeatActivity::class.java)
+                                        .putExtra("tour", Gson().toJson(response.body()!![position]))
+                                )
+                            }
                         }
                     })
                 } else {

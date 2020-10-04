@@ -1,8 +1,6 @@
 package com.bestbus.activities
 
 import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -16,7 +14,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
         mProgressBar = Dialog(this)
         mProgressBar.setContentView(ProgressBar(this))
-        mProgressBar.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        mProgressBar.window?.setBackgroundDrawableResource(android.R.color.transparent)
         mProgressBar.setCancelable(false)
     }
 
