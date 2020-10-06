@@ -10,8 +10,6 @@ import com.bestbus.R
 import com.bestbus.models.Tour
 import com.bestbus.utils.IOnItemClickListener
 import com.bestbus.utils.Util
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.collections.ArrayList
 
 class TourListAdapter (private val context: Context, private val mTours: ArrayList<Tour>, private val onClick: IOnItemClickListener): RecyclerView.Adapter<TourListAdapter.ViewHolder>() {
