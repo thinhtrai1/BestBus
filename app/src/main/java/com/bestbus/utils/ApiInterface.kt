@@ -2,10 +2,7 @@ package com.bestbus.utils
 
 import com.bestbus.models.*
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiInterface {
     @FormUrlEncoded
@@ -22,7 +19,8 @@ interface ApiInterface {
         @Field("name") name: String): Call<User>
 
     @GET("getTour.php")
-    fun getTour(): Call<ArrayList<Tour>>
+    fun getTour(@Query("from") from: String,
+                @Query("to") to: String): Call<ArrayList<Tour>>
 
     @FormUrlEncoded
     @POST("bookTour.php")

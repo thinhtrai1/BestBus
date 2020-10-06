@@ -5,8 +5,9 @@ class Tour {
     val tourName: String? = null
     val oldPrice = 0
     val price = 0
-    val startTime = 0L
-    val time = 0.0
+    val startTime: String? = null
+    val time = 0F
+    var date: String? = null
     val fromCity: String? = null
     val toCity: String? = null
     val seatQuantity = 0

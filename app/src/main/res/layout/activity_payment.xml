@@ -92,6 +92,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:textColor="@color/gray_bold"
+                    android:textSize="@dimen/text_15"
                     android:gravity="center"
                     android:text="Select Payment Method"
                     android:textStyle="bold" />

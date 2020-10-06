@@ -8,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.bestbus.R
 import com.bestbus.models.Offer
+import com.bestbus.utils.Util
 
 class OfferAdapter(private val context: Context, private val mOffers: ArrayList<Offer>) : RecyclerView.Adapter<OfferAdapter.ViewHolder>() {
 
@@ -24,7 +24,7 @@ class OfferAdapter(private val context: Context, private val mOffers: ArrayList<
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val priceOff = mOffers[position].priceOff.format() + "$ "
+        val priceOff = Util.formatFloat(mOffers[position].priceOff) + "$ "
         holder.tvOff.text = priceOff
         holder.tvCode.text = mOffers[position].code
         holder.tvCopyCode.setOnClickListener {
@@ -34,19 +34,12 @@ class OfferAdapter(private val context: Context, private val mOffers: ArrayList<
             mOffers.removeAt(p)
             notifyItemRemoved(p)
             Toast.makeText(context, context.getString(R.string.offer_code_copied), Toast.LENGTH_SHORT).show()
-            AlertDialog
-                .Builder(context)
-                .setMessage(context.getString(R.string.coming_soon))
-                .setPositiveButton(android.R.string.ok, null)
-                .show()
+//            AlertDialog
+//                .Builder(context)
+//                .setMessage(context.getString(R.string.coming_soon))
+//                .setPositiveButton(android.R.string.ok, null)
+//                .show()
         }
-    }
-
-    private fun Float.format(): String {
-        return if (this == this.toLong().toFloat())
-            String.format("%d", toLong())
-        else
-            String.format("%s", this)
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

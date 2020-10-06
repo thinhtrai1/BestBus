@@ -13,7 +13,7 @@ import com.bestbus.models.Ticket
 import com.bestbus.models.Tour
 import com.bestbus.models.User
 import com.bestbus.utils.Constant
-import com.bestbus.utils.SharedPreferenceHelper
+import com.bestbus.utils.Util
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_payment.*
 import net.glxn.qrgen.android.QRCode
@@ -28,7 +28,7 @@ class PaymentActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
 
-        val user = Gson().fromJson(SharedPreferenceHelper.instance.getString(Constant.PREF_USER), User::class.java)
+        val user = Gson().fromJson(Util.sharedPreferences.getString(Constant.PREF_USER, ""), User::class.java)
         tvName.text = user.name
         tvEmail.text = user.email
         tvPhone.text = user.phone
@@ -56,7 +56,7 @@ class PaymentActivity : BaseActivity() {
                 }
             }
             val tourData = Gson().fromJson(intent.getStringExtra("tour"), Tour::class.java)
-            Constant.client.booking(
+            Util.apiClient.booking(
                 user.id,
                 tourData.id,
                 Gson().toJson(tourData.seatSelected!!),

@@ -3,48 +3,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:animateLayoutChanges="true"
-    android:gravity="center"
     android:background="@drawable/bg_main"
     android:orientation="vertical"
-    android:paddingStart="20dp"
-    android:paddingEnd="20dp"
     tools:context=".activities.LoginActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+    <ImageView
+        android:id="@+id/imvLogo"
+        android:layout_width="@dimen/home_logo_size"
+        android:layout_height="@dimen/home_logo_size"
+        android:layout_gravity="bottom|center_horizontal"
+        android:transitionName="iconLogo"
+        android:src="@drawable/ic_app" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:animateLayoutChanges="true"
+        android:paddingHorizontal="@dimen/margin_15"
+        android:gravity="center"
+        android:layout_weight="7">
 
     <EditText
         android:id="@+id/edtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="ducthinhtrai@gmail.com"
+        android:background="@drawable/bg_btn_register"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:hint="Email" />
+        android:padding="@dimen/margin_10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_14" />
 
     <EditText
         android:id="@+id/edtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="q"
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@drawable/bg_btn_register"
+        android:hint="@string/password"
         android:inputType="textPassword"
-        android:hint="Password" />
+        android:padding="@dimen/margin_10"
+        android:textSize="@dimen/text_14" />
 
     <EditText
         android:id="@+id/edtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:hint="Your name" />
+        android:layout_marginTop="@dimen/margin_10"
+        android:background="@drawable/bg_btn_register"
+        android:inputType="textCapSentences"
+        android:hint="@string/your_name"
+        android:padding="@dimen/margin_10"
+        android:textSize="@dimen/text_14"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:paddingHorizontal="50dp"
-        android:text="login" />
+        android:layout_marginTop="@dimen/title_bar_height"
+        android:background="@drawable/bg_btn_login"
+        android:paddingHorizontal="@dimen/home_avatar_size"
+        android:paddingVertical="@dimen/margin_10"
+        android:text="@string/login"
+        android:textColor="@color/color_white_green"
+        android:textSize="@dimen/text_18"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/register" />
+        android:layout_marginTop="@dimen/margin_15"
+        android:background="@drawable/bg_btn_register"
+        android:paddingHorizontal="@dimen/margin_15"
+        android:paddingVertical="@dimen/margin_5"
+        android:text="@string/register"
+        android:textColor="@color/color_black_white"
+        android:textSize="@dimen/text_13" /></LinearLayout>
 </LinearLayout>

@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
                 android:text="@string/best_deals"
-                android:textColor="#fff"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_18"
                 android:textStyle="bold" />
 
@@ -53,7 +53,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/discount_on"
-                    android:textColor="#FFF"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_14"
                     android:textStyle="bold" />
 
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/departure_to_arrival"
-                    android:textColor="#FFF"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_12"
                     android:textStyle="bold" />
 
@@ -69,7 +69,7 @@
                     android:id="@+id/tvDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFF"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_10"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="bottom"
                 android:text="@string/please_contact_to_admin"
-                android:textColor="#FFF"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_10" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
