@@ -31,4 +31,9 @@
     <string name="to">To</string>
     <string name="date">Date</string>
     <string name="search">Search</string>
+    <string name="please_choose_seat">Please choose seat</string>
+    <string name="select_seat">SELECT SEAT</string>
+    <string name="available">Available</string>
+    <string name="booked">Booked</string>
+    <string name="selecting">Selecting</string>
 </resources>

@@ -13,10 +13,10 @@
         android:layout_marginHorizontal="@dimen/margin_20"
         android:layout_marginTop="@dimen/search_tour_margin_top"
         android:layout_marginBottom="@dimen/margin_20"
-        android:paddingTop="@dimen/search_tour_margin_top"
         android:background="@drawable/bg_search_tour"
         android:orientation="vertical"
-        android:paddingHorizontal="@dimen/margin_20">
+        android:paddingHorizontal="@dimen/margin_20"
+        android:paddingTop="@dimen/search_tour_margin_top">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -39,6 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_10"
                     android:hint="@string/from"
+                    android:inputType="text"
                     android:textColor="@color/blue"
                     android:textSize="@dimen/text_15"
                     android:textStyle="bold" />
@@ -66,33 +67,34 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_10"
                     android:hint="@string/to"
+                    android:inputType="text"
                     android:textColor="@color/blue"
                     android:textSize="@dimen/text_15"
                     android:textStyle="bold" />
             </LinearLayout>
         </FrameLayout>
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="@dimen/home_menu_icon_size"
+                android:layout_height="@dimen/home_menu_icon_size"
+                android:src="@drawable/ic_app" />
+
+            <EditText
+                android:id="@+id/edtDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/home_menu_icon_size"
-                    android:layout_height="@dimen/home_menu_icon_size"
-                    android:src="@drawable/ic_app" />
-
-                <EditText
-                    android:id="@+id/edtDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_10"
-                    android:focusable="false"
-                    android:hint="@string/date"
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/text_15"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:layout_marginStart="@dimen/margin_10"
+                android:focusable="false"
+                android:hint="@string/date"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/text_15"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -117,9 +119,9 @@
     <ImageView
         android:id="@+id/imvLogo"
         android:layout_width="@dimen/home_logo_size"
-        android:transitionName="logo"
         android:layout_height="@dimen/home_logo_size"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_20"
-        android:src="@drawable/ic_app" />
+        android:src="@drawable/ic_app"
+        android:transitionName="logo" />
 </FrameLayout>

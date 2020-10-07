@@ -2,6 +2,7 @@ package com.bestbus.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.DisplayMetrics
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bestbus.R
 import com.bestbus.adapters.SeatAdapter
@@ -15,16 +16,23 @@ class SelectSeatActivity : BaseActivity() {
         setContentView(R.layout.activity_select_seat)
 
         val tourData = Gson().fromJson(intent.getStringExtra("tour"), Tour::class.java)
-        val adapter = SeatAdapter(this, tourData.seatQuantity, tourData.seatSelected)
+        val count = 3
+
+        val metrics = DisplayMetrics()
+        display?.getRealMetrics(metrics)
+        val padding = metrics.widthPixels / (count * 6)
+        rcvSeat.setPadding(padding, 0, padding, 0)
+
+        val adapter = SeatAdapter(this, tourData.seatQuantity, tourData.seatSelected, count, metrics.widthPixels)
         rcvSeat.adapter = adapter
-        rcvSeat.layoutManager = GridLayoutManager(this, 6)
+        rcvSeat.layoutManager = GridLayoutManager(this, count)
 
         btnSelectSeat.setOnClickListener {
             if (adapter.selectingList.isNotEmpty()) {
                 tourData.seatSelected = adapter.selectingList
                 startActivity(Intent(this, PaymentActivity::class.java).putExtra("tour", Gson().toJson(tourData)))
             } else {
-                showToast("Please choose seat")
+                showToast(getString(R.string.please_choose_seat))
             }
         }
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,70 +13,87 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingHorizontal="30dp"
         android:scrollbars="vertical" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingHorizontal="30dp">
+        android:layout_marginTop="@dimen/margin_10"
+        android:baselineAligned="false"
+        android:paddingStart="@dimen/margin_10"
+        android:paddingEnd="@dimen/margin_20">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center_horizontal">
+            android:gravity="center_vertical">
 
-            <View
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@color/gray" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/item_seat_size"
+                android:layout_height="@dimen/item_seat_size"
+                android:layout_margin="@dimen/margin_10"
+                app:cardBackgroundColor="@color/gray"
+                app:cardCornerRadius="@dimen/margin_5"
+                app:cardElevation="@dimen/margin_5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="5dp"
-                android:text="Available" />
+                android:text="@string/available"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_14"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/item_seat_size"
+                android:layout_height="@dimen/item_seat_size"
+                android:layout_margin="@dimen/margin_10"
+                app:cardBackgroundColor="@color/gray_bold"
+                app:cardCornerRadius="@dimen/margin_5"
+                app:cardElevation="@dimen/margin_5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/booked"
+                android:textColor="@color/gray_bold"
+                android:textSize="@dimen/text_14"
+                android:textStyle="italic" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center_horizontal">
+            android:gravity="center_vertical|end">
 
-            <View
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="#673AB7" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="5dp"
-                android:text="Booked" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal">
-
-            <View
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="#f00" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/item_seat_size"
+                android:layout_height="@dimen/item_seat_size"
+                android:layout_margin="@dimen/margin_10"
+                app:cardBackgroundColor="@color/color_selecting"
+                app:cardCornerRadius="@dimen/margin_5"
+                app:cardElevation="@dimen/margin_5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="5dp"
-                android:text="Selecting" />
+                android:text="@string/selecting"
+                android:textColor="@color/color_selecting"
+                android:textSize="@dimen/text_14"
+                android:textStyle="italic" />
         </LinearLayout>
     </LinearLayout>
 
@@ -84,8 +102,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginVertical="40dp"
-        android:paddingHorizontal="50dp"
-        android:text="SELECT SEAT"
+        android:layout_marginVertical="@dimen/item_seat_size"
+        android:background="@drawable/bg_btn_login"
+        android:paddingHorizontal="@dimen/home_avatar_size"
+        android:paddingVertical="@dimen/margin_10"
+        android:text="@string/select_seat"
+        android:textColor="@color/color_white_green"
+        android:textSize="@dimen/text_18"
         android:textStyle="bold" />
 </LinearLayout>
