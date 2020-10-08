@@ -107,10 +107,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/bg_btn_login"
+                android:fontFamily="sans-serif-condensed-medium"
                 android:paddingHorizontal="@dimen/home_avatar_size"
                 android:paddingVertical="@dimen/margin_10"
                 android:text="@string/search"
-                android:textColor="@color/color_blue_white"
+                android:textColor="@color/color_white_green"
                 android:textSize="@dimen/text_18"
                 android:textStyle="bold" />
         </FrameLayout>
@@ -118,8 +119,8 @@
 
     <ImageView
         android:id="@+id/imvLogo"
-        android:layout_width="@dimen/home_logo_size"
-        android:layout_height="@dimen/home_logo_size"
+        android:layout_width="@dimen/home_avatar_size"
+        android:layout_height="@dimen/home_avatar_size"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_20"
         android:src="@drawable/ic_app"

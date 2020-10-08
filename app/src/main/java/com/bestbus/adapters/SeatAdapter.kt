@@ -19,7 +19,7 @@ class SeatAdapter (
 
     val selectingList = ArrayList<Int>()
     private val colorAvailable = ContextCompat.getColor(context, R.color.gray)
-    private val colorBooked = ContextCompat.getColor(context, R.color.gray_bold)
+    private val colorBooked = ContextCompat.getColor(context, R.color.gray_dark)
     private val colorSelecting = ContextCompat.getColor(context, R.color.color_selecting)
     private val itemLayout = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, screenWidth / (count * 2 + 1))
 

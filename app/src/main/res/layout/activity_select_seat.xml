@@ -60,7 +60,7 @@
                 android:layout_width="@dimen/item_seat_size"
                 android:layout_height="@dimen/item_seat_size"
                 android:layout_margin="@dimen/margin_10"
-                app:cardBackgroundColor="@color/gray_bold"
+                app:cardBackgroundColor="@color/gray_dark"
                 app:cardCornerRadius="@dimen/margin_5"
                 app:cardElevation="@dimen/margin_5" />
 
@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/booked"
-                android:textColor="@color/gray_bold"
+                android:textColor="@color/gray_dark"
                 android:textSize="@dimen/text_14"
                 android:textStyle="italic" />
         </LinearLayout>
@@ -105,6 +105,7 @@
         android:layout_marginVertical="@dimen/item_seat_size"
         android:background="@drawable/bg_btn_login"
         android:paddingHorizontal="@dimen/home_avatar_size"
+        android:fontFamily="sans-serif-condensed-medium"
         android:paddingVertical="@dimen/margin_10"
         android:text="@string/select_seat"
         android:textColor="@color/color_white_green"

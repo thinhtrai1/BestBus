@@ -25,12 +25,16 @@ interface ApiInterface {
     @FormUrlEncoded
     @POST("bookTour.php")
     fun booking(
-        @Field("userId") userId: Int,
+        @Field("userId") userId: Int?,
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("phone") phone: String,
         @Field("tourId") tourId: Int,
         @Field("seatList") seatSelected: String,
         @Field("paymentMethod") paymentMethod: String,
-        @Field("paymentInformation") paymentInformation: String?,
-        @Field("totalAmount") totalAmount: Int): Call<Ticket>
+        @Field("paymentInformation") paymentInformation: String,
+        @Field("totalAmount") totalAmount: Float,
+        @Field("qrCode") qrCode: String): Call<Ticket>
 
     @GET("getDeal.php")
     fun getDeal(): Call<ArrayList<Deal>>

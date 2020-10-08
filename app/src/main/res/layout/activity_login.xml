@@ -72,6 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/title_bar_height"
         android:background="@drawable/bg_btn_login"
+        android:fontFamily="sans-serif-condensed-medium"
         android:paddingHorizontal="@dimen/home_avatar_size"
         android:paddingVertical="@dimen/margin_10"
         android:text="@string/login"

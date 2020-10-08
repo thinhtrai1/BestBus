@@ -1,6 +1,7 @@
 package com.bestbus.adapters
 
 import android.app.Activity
+import android.os.Build
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
@@ -16,9 +17,14 @@ class BestDealAdapter(private val context: Activity, private val mDeals: ArrayLi
     private val mItemLayout: ViewGroup.LayoutParams
 
     init {
-        val display = DisplayMetrics()
-        context.display?.getRealMetrics(display)
-        mItemLayout = ViewGroup.LayoutParams(display.widthPixels * 3 / 4, ViewGroup.LayoutParams.MATCH_PARENT)
+        val metrics = DisplayMetrics()
+        if (Build.VERSION.SDK_INT >= 29) {
+            context.display?.getRealMetrics(metrics)
+        } else {
+            @Suppress("DEPRECATION")
+            context.windowManager.defaultDisplay?.getRealMetrics(metrics)
+        }
+        mItemLayout = ViewGroup.LayoutParams(metrics.widthPixels * 3 / 4, ViewGroup.LayoutParams.MATCH_PARENT)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

@@ -24,8 +24,8 @@ class TourListAdapter (private val context: Context, private val mTours: ArrayLi
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         mTours[position].let {
             holder.tvName.text = it.tourName
-            holder.tvPriceOld.text = context.getString(R.string.dollar_format, it.oldPrice)
-            holder.tvPrice.text = context.getString(R.string.dollar_format, it.price)
+            holder.tvPriceOld.text = context.getString(R.string.dollar_format, Util.formatFloat(it.oldPrice))
+            holder.tvPrice.text = context.getString(R.string.dollar_format, Util.formatFloat(it.price))
             holder.tvStartTime.text = it.startTime
             holder.tvTime.text = context.getString(R.string.hours, Util.formatFloat(it.time))
             holder.tvEndTime.text = Util.getEndTime(it.startTime, it.time)

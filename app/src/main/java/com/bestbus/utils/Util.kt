@@ -40,10 +40,16 @@ object Util {
         }
     }
 
-    fun getEndDate(startDate: String?, duration: Float): String? {
+    fun getEndDate(startDate: String?, startTime: String?, duration: Float): String? {
         return try {
             Constant.dateFormat.format(Calendar.getInstance().apply {
                 time = Constant.dateFormat.parse(startDate ?: "")!!
+                Calendar.getInstance().apply {
+                    time = Constant.timeFormat.parse(startTime ?: "")!!
+                }.let {
+                    set(Calendar.HOUR, it.get(Calendar.HOUR_OF_DAY))
+                    set(Calendar.MINUTE, it.get(Calendar.MINUTE))
+                }
                 add(Calendar.MINUTE, (duration * 60).toInt())
             }.time)
         } catch (e: ParseException) {

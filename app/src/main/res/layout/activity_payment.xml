@@ -1,245 +1,428 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_main">
+    tools:context=".activities.PaymentActivity">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:background="@drawable/bg_home_header"
+        android:gravity="center"
+        android:text="@string/payment_information"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_18"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title"
+        android:background="@drawable/bg_main" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context=".activities.PaymentActivity">
+        android:layout_below="@id/title"
+        android:layout_marginHorizontal="@dimen/margin_15"
+        android:layout_marginTop="@dimen/margin_15"
+        android:layout_marginBottom="@dimen/margin_10">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_15">
+
+            <ImageView
+                android:id="@+id/ic1"
+                android:layout_width="@dimen/tour_list_item_header_icon"
+                android:layout_height="@dimen/tour_list_item_header_icon"
+                android:src="@drawable/ic_app"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10"
+                android:background="@android:color/transparent"
+                android:hint="@string/your_name"
+                android:inputType="textCapSentences"
+                android:padding="0dp"
+                android:textColor="@color/gray_dark"
+                android:textSize="@dimen/text_13"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/ic1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ic1"
+                app:layout_constraintTop_toTopOf="@id/ic1" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1.5dp"
+                android:background="@color/gray_dark"
+                app:layout_constraintBottom_toBottomOf="@id/ic1"
+                app:layout_constraintEnd_toEndOf="@id/edtName"
+                app:layout_constraintStart_toStartOf="@id/edtName" />
+
+            <ImageView
+                android:id="@+id/ic2"
+                android:layout_width="@dimen/tour_list_item_header_icon"
+                android:layout_height="@dimen/tour_list_item_header_icon"
+                android:layout_marginTop="@dimen/margin_10"
+                android:src="@drawable/ic_app"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ic1" />
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10"
+                android:background="@android:color/transparent"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="0dp"
+                android:textColor="@color/gray_dark"
+                android:textSize="@dimen/text_13"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/ic2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ic2"
+                app:layout_constraintTop_toTopOf="@id/ic2" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1.5dp"
+                android:background="@color/gray_dark"
+                app:layout_constraintBottom_toBottomOf="@id/ic2"
+                app:layout_constraintEnd_toEndOf="@id/edtName"
+                app:layout_constraintStart_toStartOf="@id/edtName" />
+
+            <ImageView
+                android:id="@+id/ic3"
+                android:layout_width="@dimen/tour_list_item_header_icon"
+                android:layout_height="@dimen/tour_list_item_header_icon"
+                android:layout_marginTop="@dimen/margin_10"
+                android:src="@drawable/ic_app"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ic2" />
+
+            <EditText
+                android:id="@+id/edtPhone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_10"
+                android:background="@android:color/transparent"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                android:padding="0dp"
+                android:textColor="@color/gray_dark"
+                android:textSize="@dimen/text_13"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/ic3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ic3"
+                app:layout_constraintTop_toTopOf="@id/ic3" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1.5dp"
+                android:background="@color/gray_dark"
+                app:layout_constraintBottom_toBottomOf="@id/ic3"
+                app:layout_constraintEnd_toEndOf="@id/edtName"
+                app:layout_constraintStart_toStartOf="@id/edtName" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnFinish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/margin_20"
+        android:background="@drawable/bg_btn_login"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:paddingHorizontal="@dimen/home_avatar_size"
+        android:paddingVertical="@dimen/margin_10"
+        android:text="@string/finish"
+        android:textColor="@color/color_white_green"
+        android:textSize="@dimen/text_18"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btnFinish"
+        android:layout_below="@id/profile">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp">
+            android:layout_marginHorizontal="@dimen/margin_15"
+            android:layout_marginVertical="@dimen/margin_5">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="15dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_app" />
-
-                    <TextView
-                        android:id="@+id/tvName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_app" />
-
-                    <TextView
-                        android:id="@+id/tvEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_app" />
-
-                    <TextView
-                        android:id="@+id/tvPhone"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp" />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="@dimen/margin_15">
 
                 <TextView
+                    android:id="@+id/spm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="@color/gray_bold"
-                    android:textSize="@dimen/text_15"
+                    android:layout_marginBottom="@dimen/margin_10"
                     android:gravity="center"
-                    android:text="Select Payment Method"
-                    android:textStyle="bold" />
+                    android:text="@string/select_payment_method"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_18"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@id/ic1"
+                    android:layout_width="@dimen/tour_list_item_header_icon"
+                    android:layout_height="@dimen/tour_list_item_header_icon"
+                    android:src="@drawable/ic_app"
+                    app:layout_constraintBottom_toBottomOf="@id/edtCreditCard"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/edtCreditCard" />
+
+                <EditText
+                    android:id="@+id/edtCreditCard"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/payment_edt_height"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/tour_list_item_header_icon"
+                    android:background="@drawable/bg_edt_input_payment"
+                    android:focusable="false"
+                    android:gravity="bottom"
+                    android:hint="@string/please_select_your_card"
+                    android:inputType="text"
+                    android:paddingHorizontal="@dimen/margin_10"
+                    android:paddingBottom="@dimen/margin_5"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_13"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ic1"
+                    app:layout_constraintTop_toBottomOf="@id/spm" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center_vertical">
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toTopOf="@id/edtCreditCard"
+                    app:layout_constraintStart_toStartOf="@id/edtCreditCard"
+                    app:layout_constraintTop_toTopOf="@id/edtCreditCard">
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_app" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/payment_edt_title_height"
+                        android:layout_margin="@dimen/margin_5"
+                        app:cardCornerRadius="@dimen/payment_edt_title_radius"
+                        app:cardElevation="@dimen/margin_2.5">
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Debit/ Credit Card"
-                            android:textColor="#f64f59"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="@dimen/margin_10"
+                            android:text="@string/debit_credit_card"
+                            android:textColor="@color/color_selecting"
+                            android:textSize="@dimen/text_12"
                             android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
+                </FrameLayout>
 
-                        <EditText
-                            android:id="@+id/edtDebit"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Please select your card"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="@dimen/tour_list_item_header_icon"
+                    android:layout_height="@dimen/tour_list_item_header_icon"
+                    android:src="@drawable/ic_app"
+                    app:layout_constraintBottom_toBottomOf="@id/edtNetBanking"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/edtNetBanking" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <EditText
+                    android:id="@+id/edtNetBanking"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/payment_edt_height"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/payment_edt_title_height"
+                    android:background="@drawable/bg_edt_input_payment"
+                    android:focusable="false"
+                    android:gravity="bottom"
+                    android:hint="@string/pay_by_your_bank_account"
+                    android:inputType="text"
+                    android:paddingHorizontal="@dimen/margin_10"
+                    android:paddingBottom="@dimen/margin_5"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_13"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ic1"
+                    app:layout_constraintTop_toBottomOf="@id/edtCreditCard" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center_vertical">
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toTopOf="@id/edtNetBanking"
+                    app:layout_constraintStart_toStartOf="@id/edtNetBanking"
+                    app:layout_constraintTop_toTopOf="@id/edtNetBanking">
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_app" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/payment_edt_title_height"
+                        android:layout_margin="@dimen/margin_5"
+                        app:cardCornerRadius="@dimen/payment_edt_title_radius"
+                        app:cardElevation="@dimen/margin_2.5">
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Net Banking"
-                            android:textColor="#f64f59"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="@dimen/margin_10"
+                            android:text="@string/net_banking"
+                            android:textColor="@color/color_selecting"
+                            android:textSize="@dimen/text_12"
                             android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
+                </FrameLayout>
 
-                        <EditText
-                            android:id="@+id/edtNetBanking"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Please select your card"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="@dimen/tour_list_item_header_icon"
+                    android:layout_height="@dimen/tour_list_item_header_icon"
+                    android:src="@drawable/ic_app"
+                    app:layout_constraintBottom_toBottomOf="@id/edtCodeShipping"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/edtCodeShipping" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <EditText
+                    android:id="@+id/edtCodeShipping"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/payment_edt_height"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/payment_edt_title_height"
+                    android:ellipsize="end"
+                    android:gravity="bottom"
+                    android:hint="@string/tell_us_your_address"
+                    android:inputType="text"
+                    android:paddingHorizontal="@dimen/margin_10"
+                    android:paddingBottom="@dimen/margin_5"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_13"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@android:color/transparent"
+                    app:layout_constraintStart_toEndOf="@id/ic1"
+                    app:layout_constraintTop_toBottomOf="@id/edtNetBanking" />
+
+                <View
+                    android:id="@+id/viewCodeShipping"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/bg_edt_input_payment"
+                    app:layout_constraintBottom_toBottomOf="@id/edtCodeShipping"
+                    app:layout_constraintStart_toStartOf="@id/edtCodeShipping"
+                    app:layout_constraintEnd_toEndOf="@id/edtCodeShipping"
+                    app:layout_constraintTop_toTopOf="@id/edtCodeShipping"/>
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center_vertical">
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toTopOf="@id/edtCodeShipping"
+                    app:layout_constraintStart_toStartOf="@id/edtCodeShipping"
+                    app:layout_constraintTop_toTopOf="@id/edtCodeShipping">
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_app" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/payment_edt_title_height"
+                        android:layout_margin="@dimen/margin_5"
+                        app:cardCornerRadius="@dimen/payment_edt_title_radius"
+                        app:cardElevation="@dimen/margin_2.5">
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Code shipping"
-                            android:textColor="#f64f59"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="@dimen/margin_10"
+                            android:text="@string/code_shipping"
+                            android:textColor="@color/color_selecting"
+                            android:textSize="@dimen/text_12"
                             android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
+                </FrameLayout>
 
-                        <EditText
-                            android:id="@+id/edtCodeShipping"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Please select your card"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-                </LinearLayout>
+                <ImageView
+                    android:layout_width="@dimen/tour_list_item_header_icon"
+                    android:layout_height="@dimen/tour_list_item_header_icon"
+                    android:src="@drawable/ic_app"
+                    app:layout_constraintBottom_toBottomOf="@id/edtAtBusStation"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/edtAtBusStation" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <EditText
+                    android:id="@+id/edtAtBusStation"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/payment_edt_height"
+                    android:layout_marginStart="@dimen/margin_10"
+                    android:layout_marginTop="@dimen/payment_edt_title_height"
+                    android:background="@drawable/bg_edt_input_payment"
+                    android:ellipsize="end"
+                    android:focusable="false"
+                    android:gravity="bottom"
+                    android:hint="@string/get_the_pre_order"
+                    android:inputType="text"
+                    android:paddingHorizontal="@dimen/margin_10"
+                    android:paddingBottom="@dimen/margin_5"
+                    android:textColor="@color/gray_dark"
+                    android:textSize="@dimen/text_13"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ic1"
+                    app:layout_constraintTop_toBottomOf="@id/edtCodeShipping" />
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center_vertical">
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toTopOf="@id/edtAtBusStation"
+                    app:layout_constraintStart_toStartOf="@id/edtAtBusStation"
+                    app:layout_constraintTop_toTopOf="@id/edtAtBusStation">
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_app" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:orientation="vertical">
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/payment_edt_title_height"
+                        android:layout_margin="@dimen/margin_5"
+                        app:cardCornerRadius="@dimen/payment_edt_title_radius"
+                        app:cardElevation="@dimen/margin_2.5">
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Payment as Bus Station"
-                            android:textColor="#f64f59"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="@dimen/margin_10"
+                            android:text="@string/payment_as_sus_station"
+                            android:textColor="@color/color_selecting"
+                            android:textSize="@dimen/text_12"
                             android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/edtBusStation"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Please select your card"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/btnFinish"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:paddingHorizontal="50dp"
-            android:text="finish" />
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</RelativeLayout>

@@ -12,6 +12,7 @@
         android:roundIcon="@drawable/ic_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.DetailActivity"></activity>
         <activity android:name=".activities.SearchTourActivity" />
         <activity
             android:name=".activities.SplashActivity"
