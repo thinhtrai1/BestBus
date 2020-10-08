@@ -12,7 +12,7 @@ class Tour {
     val toCity: String? = null
     val seatQuantity = 0
     var seatSelected: ArrayList<Int>? = null
-    val column = 3
+    val count = 3
     val vat = 0F
     var amount = 0F
 }

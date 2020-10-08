@@ -314,6 +314,7 @@
                     android:layout_height="@dimen/payment_edt_height"
                     android:layout_marginStart="@dimen/margin_10"
                     android:layout_marginTop="@dimen/payment_edt_title_height"
+                    android:background="@drawable/bg_edt_input_payment"
                     android:ellipsize="end"
                     android:gravity="bottom"
                     android:hint="@string/tell_us_your_address"
@@ -324,19 +325,8 @@
                     android:textSize="@dimen/text_13"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:background="@android:color/transparent"
                     app:layout_constraintStart_toEndOf="@id/ic1"
                     app:layout_constraintTop_toBottomOf="@id/edtNetBanking" />
-
-                <View
-                    android:id="@+id/viewCodeShipping"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@drawable/bg_edt_input_payment"
-                    app:layout_constraintBottom_toBottomOf="@id/edtCodeShipping"
-                    app:layout_constraintStart_toStartOf="@id/edtCodeShipping"
-                    app:layout_constraintEnd_toEndOf="@id/edtCodeShipping"
-                    app:layout_constraintTop_toTopOf="@id/edtCodeShipping"/>
 
                 <FrameLayout
                     android:layout_width="wrap_content"

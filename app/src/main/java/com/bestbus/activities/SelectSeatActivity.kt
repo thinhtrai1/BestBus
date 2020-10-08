@@ -25,12 +25,12 @@ class SelectSeatActivity : BaseActivity() {
             @Suppress("DEPRECATION")
             windowManager.defaultDisplay?.getRealMetrics(metrics)
         }
-        val padding = metrics.widthPixels / (tourData.column * 6)
+        val padding = metrics.widthPixels / (tourData.count * 6)
         rcvSeat.setPadding(padding, 0, padding, 0)
 
-        val adapter = SeatAdapter(this, tourData.seatQuantity, tourData.seatSelected, tourData.column, metrics.widthPixels)
+        val adapter = SeatAdapter(this, tourData.seatQuantity, tourData.seatSelected, tourData.count, metrics.widthPixels)
         rcvSeat.adapter = adapter
-        rcvSeat.layoutManager = GridLayoutManager(this, tourData.column)
+        rcvSeat.layoutManager = GridLayoutManager(this, tourData.count)
 
         btnSelectSeat.setOnClickListener {
             if (adapter.selectingList.isNotEmpty()) {

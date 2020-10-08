@@ -56,12 +56,15 @@ class PaymentActivity : BaseActivity() {
                 .show()
         }
 
-        viewCodeShipping.setOnClickListener {
-            newSelect(edtCodeShipping)
+        edtCodeShipping.setOnFocusChangeListener { _, b ->
+            if (b) {
+                newSelect(edtCodeShipping)
+            }
         }
 
         edtAtBusStation.setOnClickListener {
             newSelect(edtAtBusStation)
+            edtCodeShipping.clearFocus()
         }
 
         btnFinish.setOnClickListener {
@@ -132,7 +135,7 @@ class PaymentActivity : BaseActivity() {
                     response.body()?.let {
                         var seat = ""
                         for (i in it.seatList) {
-                            seat += (i / (tourData.column * 2) + 65).toChar().toString().plus(i % (tourData.column * 2) + 1) + ", "
+                            seat += (i / (tourData.count * 2) + 65).toChar().toString().plus(i % (tourData.count * 2) + 1) + ", "
                         }
                         val ticketInformation = """
                             ID: ${it.id}
