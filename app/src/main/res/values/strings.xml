@@ -43,6 +43,7 @@
     <string name="total_amount">Total Amount:</string>
     <string name="usd">USD %1$s</string>
     <string name="book_now">BOOK NOW</string>
+    <string name="confirm">confirm</string>
     <string name="finish">finish</string>
     <string name="select_payment_method">Select Payment Method</string>
     <string name="payment_information">Payment Information</string>
@@ -55,7 +56,11 @@
     <string name="tell_us_your_address">Tell us your address and ticket will be delivered</string>
     <string name="get_the_pre_order">Get the pre-order ticket at our station</string>
     <string name="please_choose_payment_method">Please choose payment method</string>
-    <string name="electronic_ticket">Electronic Ticket</string>
-    <string name="use_this_qr_code_image">Important: Use this QR-Code image or find in Download folder to receive your ticket</string>
+    <string name="electronic_ticket">BESTBUS\nElectronic Ticket</string>
     <string name="are_your_sure">Are you sure?</string>
+    <string name="your_tickets"><u>Your tickets</u></string>
+    <string name="id">ID</string>
+    <string name="leave">Leave</string>
+    <string name="unknown">Unknown</string>
+    <string name="no_ticket_found">No BESTBUS Electronic ticket found</string>
 </resources>

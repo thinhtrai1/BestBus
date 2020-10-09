@@ -1,0 +1,54 @@
+package com.bestbus.adapters
+
+import android.app.Dialog
+import android.content.Context
+import android.net.Uri
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.bestbus.R
+import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
+
+class MyTicketAdapter(private val context: Context, private val mTickets: ArrayList<File>) : RecyclerView.Adapter<MyTicketAdapter.ViewHolder>() {
+    private val mDateTimeFormat = SimpleDateFormat("EEE, dd MMM yyyy HH:mm", Locale.US)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_rcv_my_ticket, parent, false))
+    }
+
+    override fun getItemCount(): Int {
+        return mTickets.size
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        mTickets[position].name.let {
+            try {
+                holder.tvLeave.text = mDateTimeFormat.format(Date(it.substring(0, 13).toLong()))
+                holder.tvId.text = it.substring(13, it.length - 4)
+            } catch (e: NumberFormatException) {
+                holder.tvLeave.text = context.getString(R.string.unknown)
+                holder.tvId.text = context.getString(R.string.unknown)
+            }
+        }
+
+        holder.itemView.setOnClickListener {
+            val imageView = ImageView(context)
+            imageView.setImageURI(Uri.fromFile(mTickets[position]))
+            Dialog(context, android.R.style.Theme_Black_NoTitleBar).apply {
+                setContentView(imageView)
+                show()
+            }
+        }
+    }
+
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val tvId: TextView = view.findViewById(R.id.tvId)
+        val tvLeave: TextView = view.findViewById(R.id.tvLeave)
+    }
+}

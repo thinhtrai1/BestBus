@@ -1,17 +1,21 @@
 package com.bestbus.activities
 
 import android.app.ActivityOptions
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Pair
 import android.view.View
+import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.bestbus.R
 import com.bestbus.adapters.BestDealAdapter
+import com.bestbus.adapters.MyTicketAdapter
 import com.bestbus.adapters.OfferAdapter
 import com.bestbus.models.Deal
 import com.bestbus.models.Offer
@@ -23,6 +27,9 @@ import kotlinx.android.synthetic.main.activity_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeActivity : BaseActivity() {
 
@@ -132,6 +139,28 @@ class HomeActivity : BaseActivity() {
                     Pair.create(imvIcon, "iconLogo")
                 ).toBundle()
             )
+        }
+
+        viewYourTicket.setOnClickListener {
+            if (File(Constant.TICKET_FOLDER).listFiles().isNullOrEmpty()) {
+                showToast(getString(R.string.no_ticket_found))
+            } else {
+                val files = ArrayList<File>()
+                for (file in File(Constant.TICKET_FOLDER).listFiles()!!.sortedDescending()) {
+                    if (file.name.toLowerCase(Locale.US).endsWith(".png")) {
+                        files.add(file)
+                    }
+                }
+                Dialog(this).apply {
+                    val recyclerView = RecyclerView(this@HomeActivity)
+                    recyclerView.adapter = MyTicketAdapter(this@HomeActivity, files)
+                    recyclerView.layoutManager = LinearLayoutManager(this@HomeActivity, LinearLayoutManager.VERTICAL, false)
+                    setContentView(recyclerView)
+                    window?.attributes?.width = WindowManager.LayoutParams.MATCH_PARENT
+                    window?.attributes?.height = WindowManager.LayoutParams.MATCH_PARENT
+                    show()
+                }
+            }
         }
 
         viewUpdateProfile.setOnClickListener {

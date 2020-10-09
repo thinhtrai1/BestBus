@@ -1,8 +1,14 @@
 package com.bestbus.activities
 
+import android.Manifest
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import android.widget.EditText
@@ -14,12 +20,16 @@ import com.bestbus.models.User
 import com.bestbus.utils.Constant
 import com.bestbus.utils.Util
 import com.google.gson.Gson
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.WriterException
+import com.google.zxing.qrcode.QRCodeWriter
 import kotlinx.android.synthetic.main.activity_payment.*
 import kotlinx.android.synthetic.main.dialog_booking_success.*
-import net.glxn.qrgen.android.QRCode
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
+import java.io.FileOutputStream
 import java.util.*
 
 class PaymentActivity : BaseActivity() {
@@ -67,7 +77,7 @@ class PaymentActivity : BaseActivity() {
             edtCodeShipping.clearFocus()
         }
 
-        btnFinish.setOnClickListener {
+        btnConfirm.setOnClickListener {
             if (viewSelecting == null) {
                 showToast(getString(R.string.please_choose_payment_method))
                 return@setOnClickListener
@@ -90,6 +100,12 @@ class PaymentActivity : BaseActivity() {
     }
 
     private fun booking() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 0)
+                return
+            }
+        }
         showLoading(true)
         val paymentMethod: String
         val paymentInformation: String
@@ -112,7 +128,7 @@ class PaymentActivity : BaseActivity() {
             }
         }
         val tourData = Gson().fromJson(intent.getStringExtra("tour"), Tour::class.java)
-        val code = UUID.randomUUID().toString() + UUID.randomUUID().toString() + UUID.randomUUID().toString()
+        val mQRCode = UUID.randomUUID().toString() + UUID.randomUUID().toString() + UUID.randomUUID().toString()
         Util.apiClient.booking(
             user?.id,
             edtName.text.toString().trim(),
@@ -123,7 +139,7 @@ class PaymentActivity : BaseActivity() {
             paymentMethod,
             paymentInformation,
             tourData.amount,
-            code
+            mQRCode
         ).enqueue(object : Callback<Ticket> {
             override fun onFailure(call: Call<Ticket>, t: Throwable) {
                 showToast(t.message)
@@ -150,7 +166,7 @@ class PaymentActivity : BaseActivity() {
                             Start date: ${tourData.date}
                             End time: ${Util.getEndTime(tourData.startTime, tourData.time)}
                             End date: ${Util.getEndDate(tourData.date, tourData.startTime, tourData.time)}
-                            Time: ${tourData.time}
+                            Time: ${getString(R.string.hours, Util.formatFloat(tourData.time))}
                             Payment method: $paymentMethod
                             --------------------------
                             Total Amount: USD ${Util.formatFloat(it.totalAmount)}
@@ -158,23 +174,31 @@ class PaymentActivity : BaseActivity() {
 
                         Dialog(this@PaymentActivity).apply {
                             setContentView(R.layout.dialog_booking_success)
+                            setCancelable(false)
                             window?.attributes?.width = WindowManager.LayoutParams.MATCH_PARENT
                             window?.attributes?.height = WindowManager.LayoutParams.MATCH_PARENT
                             show()
                             tvInformation.text = ticketInformation
-                            imvQRCode.setImageBitmap(QRCode.from(it.qrCode).withColor(Color.WHITE, Color.TRANSPARENT).bitmap())
+                            imvQRCode.setImageBitmap(generateQRCode(mQRCode))
+                            btnFinish.setOnClickListener { _ ->
+                                val bitmap = Bitmap.createBitmap(layoutTicket.width, layoutTicket.height, Bitmap.Config.ARGB_8888)
+                                val canvas = Canvas(bitmap)
+                                layoutTicket.draw(canvas)
+                                startActivity(Intent(this@PaymentActivity, HomeActivity::class.java)
+                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+                                Thread(Runnable {
+                                    val path = File(Constant.TICKET_FOLDER)
+                                    if (!path.exists()) {
+                                        path.mkdirs()
+                                    }
+                                    val imageFile = File(path, Util.getTicketFileName(tourData.date, tourData.startTime, it.id))
+                                    val outputStream = FileOutputStream(imageFile)
+                                    bitmap.compress(Bitmap.CompressFormat.PNG, 0, outputStream)
+                                    outputStream.flush()
+                                    outputStream.close()
+                                }).start()
+                            }
                         }
-
-//                            Bitmap bitmap = your bitmap;
-//                            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-//                            bitmap.compress(CompressFormat.PNG, 0 /*ignored for PNG*/, bos);
-//                            byte[] bitmapdata = bos.toByteArray();
-//
-////write the bytes in file
-//                            FileOutputStream fos = new FileOutputStream(f);
-//                            fos.write(bitmapdata);
-//                            fos.flush();
-//                            fos.close();
                     }
                 } else {
                     showToast(response.errorBody()?.string())
@@ -182,5 +206,29 @@ class PaymentActivity : BaseActivity() {
                 showLoading(false)
             }
         })
+    }
+
+    private fun generateQRCode(data: String, size: Int = 256): Bitmap {
+        val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
+        try {
+//            val hints: MutableMap<EncodeHintType?, Any?> = EnumMap(EncodeHintType::class.java)
+//            hints[EncodeHintType.MARGIN] = 0
+//            val bitMatrix = MultiFormatWriter().encode(code, BarcodeFormat.QR_CODE, size, size, hints)
+            val bitMatrix = QRCodeWriter().encode(data, BarcodeFormat.QR_CODE, size, size)
+            for (x in 0 until size) {
+                for (y in 0 until size) {
+                    bitmap.setPixel(x, y, if (bitMatrix[x, y]) Color.WHITE else Color.TRANSPARENT)
+                }
+            }
+        } catch (e: WriterException) {
+            e.printStackTrace()
+        }
+        return bitmap
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (requestCode == 0) booking()
+        }
     }
 }

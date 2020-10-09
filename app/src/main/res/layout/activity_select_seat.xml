@@ -35,8 +35,8 @@
             android:gravity="center_vertical">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="@dimen/item_seat_size"
-                android:layout_height="@dimen/item_seat_size"
+                android:layout_width="@dimen/select_seat_icon_size"
+                android:layout_height="@dimen/select_seat_icon_size"
                 android:layout_margin="@dimen/margin_10"
                 app:cardBackgroundColor="@color/gray"
                 app:cardCornerRadius="@dimen/margin_5"
@@ -57,8 +57,8 @@
             android:gravity="center_vertical">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="@dimen/item_seat_size"
-                android:layout_height="@dimen/item_seat_size"
+                android:layout_width="@dimen/select_seat_icon_size"
+                android:layout_height="@dimen/select_seat_icon_size"
                 android:layout_margin="@dimen/margin_10"
                 app:cardBackgroundColor="@color/gray_dark"
                 app:cardCornerRadius="@dimen/margin_5"
@@ -80,8 +80,8 @@
             android:gravity="center_vertical|end">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="@dimen/item_seat_size"
-                android:layout_height="@dimen/item_seat_size"
+                android:layout_width="@dimen/select_seat_icon_size"
+                android:layout_height="@dimen/select_seat_icon_size"
                 android:layout_margin="@dimen/margin_10"
                 app:cardBackgroundColor="@color/color_selecting"
                 app:cardCornerRadius="@dimen/margin_5"
@@ -102,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginVertical="@dimen/item_seat_size"
+        android:layout_marginVertical="@dimen/select_seat_icon_size"
         android:background="@drawable/bg_btn_login"
         android:paddingHorizontal="@dimen/home_avatar_size"
         android:fontFamily="sans-serif-condensed-medium"

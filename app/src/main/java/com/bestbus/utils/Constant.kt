@@ -1,5 +1,6 @@
 package com.bestbus.utils
 
+import android.os.Environment
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -10,4 +11,5 @@ object Constant {
 
     val timeFormat = SimpleDateFormat("HH:mm", Locale.US)
     val dateFormat = SimpleDateFormat("EEE, dd MMM yyyy", Locale.US)
+    val TICKET_FOLDER = Environment.getExternalStorageDirectory().path + "/BESTBUS/Ticket"
 }

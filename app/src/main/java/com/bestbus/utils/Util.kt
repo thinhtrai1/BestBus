@@ -56,4 +56,20 @@ object Util {
             startDate
         }
     }
+
+    fun getTicketFileName(startDate: String?, startTime: String?, id: Int): String {
+        return try {
+            Calendar.getInstance().apply {
+                time = Constant.dateFormat.parse(startDate ?: "")!!
+                Calendar.getInstance().apply {
+                    time = Constant.timeFormat.parse(startTime ?: "")!!
+                }.let {
+                    set(Calendar.HOUR, it.get(Calendar.HOUR_OF_DAY))
+                    set(Calendar.MINUTE, it.get(Calendar.MINUTE))
+                }
+            }.timeInMillis.toString() + id + ".png"
+        } catch (e: ParseException) {
+            Calendar.getInstance().timeInMillis.toString() + id + ".png"
+        }
+    }
 }
