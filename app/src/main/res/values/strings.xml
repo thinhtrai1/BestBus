@@ -63,4 +63,8 @@
     <string name="leave">Leave</string>
     <string name="unknown">Unknown</string>
     <string name="no_ticket_found">No BESTBUS Electronic ticket found</string>
+    <string name="book_tour"><u>Book tour</u></string>
+    <string name="scan_ticket"><u>Scan ticket</u></string>
+    <string name="scan_more">Scan more</string>
+    <string name="an_error_occurred">An error occurred</string>
 </resources>

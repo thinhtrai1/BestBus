@@ -220,6 +220,55 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/viewScanTicket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_15"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="@dimen/margin_15">
+
+                <ImageView
+                    android:layout_width="@dimen/home_menu_icon_size"
+                    android:layout_height="@dimen/home_menu_icon_size"
+                    android:src="@drawable/ic_app" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:text="@string/scan_ticket"
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_14"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/viewBookTour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_15"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="@dimen/margin_15">
+
+                <ImageView
+                    android:id="@+id/iconBookTour"
+                    android:layout_width="@dimen/home_menu_icon_size"
+                    android:layout_height="@dimen/home_menu_icon_size"
+                    android:src="@drawable/ic_app" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:text="@string/book_tour"
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_14"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/viewLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -229,7 +278,7 @@
                 android:paddingHorizontal="@dimen/margin_15">
 
                 <ImageView
-                    android:id="@+id/imvIcon"
+                    android:id="@+id/iconLogin"
                     android:layout_width="@dimen/home_menu_icon_size"
                     android:layout_height="@dimen/home_menu_icon_size"
                     android:src="@drawable/ic_app" />

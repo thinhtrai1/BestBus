@@ -7,4 +7,5 @@ class User {
     val image: String? = null
     val email: String = ""
     val password: String = ""
+    var isAdmin = 0
 }

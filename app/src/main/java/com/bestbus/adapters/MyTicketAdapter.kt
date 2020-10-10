@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bestbus.R
 import java.io.File
+import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -30,8 +31,8 @@ class MyTicketAdapter(private val context: Context, private val mTickets: ArrayL
         mTickets[position].name.let {
             try {
                 holder.tvLeave.text = mDateTimeFormat.format(Date(it.substring(0, 13).toLong()))
-                holder.tvId.text = it.substring(13, it.length - 4)
-            } catch (e: NumberFormatException) {
+                holder.tvId.text = it.substring(13, it.length - 4).toInt().toString()
+            } catch (e: Exception) {
                 holder.tvLeave.text = context.getString(R.string.unknown)
                 holder.tvId.text = context.getString(R.string.unknown)
             }

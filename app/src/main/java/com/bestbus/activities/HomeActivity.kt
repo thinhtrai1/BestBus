@@ -1,8 +1,11 @@
 package com.bestbus.activities
 
+import android.Manifest
 import android.app.ActivityOptions
 import android.app.Dialog
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,6 +13,7 @@ import android.util.Pair
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +32,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
+import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -39,19 +44,25 @@ class HomeActivity : BaseActivity() {
 
         val user = Gson().fromJson<User?>(Util.sharedPreferences.getString(Constant.PREF_USER, null), User::class.java)
         if (user != null) {
+            tvName.text = user.name
             tvEmail.text = user.email
-            if (user.name.isNullOrEmpty()) {
-                tvName.visibility = View.GONE
-            } else {
-                tvName.text = user.name
-            }
             if (user.phone.isNullOrEmpty()) {
                 tvPhone.visibility = View.GONE
             } else {
                 tvPhone.text = user.phone
             }
             viewLogin.visibility = View.GONE
+            if (user.isAdmin == 1) {
+                viewScanTicket.visibility = View.VISIBLE
+                viewBookTour.visibility = View.GONE
+                viewYourTicket.visibility = View.GONE
+            } else {
+                viewScanTicket.visibility = View.GONE
+                viewBookTour.visibility = View.VISIBLE
+                viewYourTicket.visibility = View.VISIBLE
+            }
         } else {
+            viewScanTicket.visibility = View.GONE
             viewProfile.visibility = View.GONE
             viewUpdateProfile.visibility = View.GONE
             viewChangePassword.visibility = View.GONE
@@ -131,24 +142,47 @@ class HomeActivity : BaseActivity() {
             viewContainer.openDrawer(viewMenuLeft)
         }
 
+        viewBookTour.setOnClickListener {
+            startActivity(
+                Intent(this, SearchTourActivity::class.java),
+                ActivityOptions.makeSceneTransitionAnimation(
+                    this,
+                    Pair.create(iconBookTour, "logo")
+                ).toBundle()
+            )
+        }
+
         viewLogin.setOnClickListener {
             startActivity(
                 Intent(this, LoginActivity::class.java),
                 ActivityOptions.makeSceneTransitionAnimation(
                     this,
-                    Pair.create(imvIcon, "iconLogo")
+                    Pair.create(iconLogin, "iconLogo")
                 ).toBundle()
             )
         }
 
         viewYourTicket.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 0)
+                    return@setOnClickListener
+                }
+            }
             if (File(Constant.TICKET_FOLDER).listFiles().isNullOrEmpty()) {
                 showToast(getString(R.string.no_ticket_found))
             } else {
                 val files = ArrayList<File>()
-                for (file in File(Constant.TICKET_FOLDER).listFiles()!!.sortedDescending()) {
-                    if (file.name.toLowerCase(Locale.US).endsWith(".png")) {
-                        files.add(file)
+                for (file in File(Constant.TICKET_FOLDER).listFiles()!!) {
+                    val name = file.name
+                    if (name.toLowerCase(Locale.US).endsWith(".png")) {
+                        try {
+                            name.substring(0, 13).toLong()
+                            name.substring(13, name.length - 4).toInt().toString()
+                            files.add(0, file)
+                        } catch (e: Exception) {
+                            files.add(file)
+                        }
                     }
                 }
                 Dialog(this).apply {
@@ -172,10 +206,34 @@ class HomeActivity : BaseActivity() {
         viewLogout.setOnClickListener {
             viewProfile.visibility = View.GONE
             viewLogin.visibility = View.VISIBLE
+            viewBookTour.visibility = View.VISIBLE
+            viewYourTicket.visibility = View.VISIBLE
             viewUpdateProfile.visibility = View.GONE
             viewChangePassword.visibility = View.GONE
+            viewScanTicket.visibility = View.GONE
             viewLogout.visibility = View.GONE
             Util.sharedPreferences.edit().clear().apply()
+        }
+
+        viewScanTicket.setOnClickListener {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(arrayOf(Manifest.permission.CAMERA), 1)
+                }
+            } else {
+                startActivity(Intent(this, ScanTicketActivity::class.java))
+            }
+            viewContainer.closeDrawer(viewMenuLeft)
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (requestCode == 0) {
+                viewYourTicket.performClick()
+            } else if (requestCode == 1) {
+                startActivity(Intent(this, ScanTicketActivity::class.java))
+            }
         }
     }
 }

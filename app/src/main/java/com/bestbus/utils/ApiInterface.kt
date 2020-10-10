@@ -30,15 +30,18 @@ interface ApiInterface {
         @Field("email") email: String,
         @Field("phone") phone: String,
         @Field("tourId") tourId: Int,
+        @Field("date") date: String?,
         @Field("seatList") seatSelected: String,
         @Field("paymentMethod") paymentMethod: String,
         @Field("paymentInformation") paymentInformation: String,
-        @Field("totalAmount") totalAmount: Float,
-        @Field("qrCode") qrCode: String): Call<Ticket>
+        @Field("totalAmount") totalAmount: Float): Call<Ticket>
 
     @GET("getDeal.php")
     fun getDeal(): Call<ArrayList<Deal>>
 
     @GET("getOffer.php")
     fun getOffer(): Call<ArrayList<Offer>>
+
+    @GET("scanTicket.php")
+    fun scanTicket(@Query("qrCode") qrCode: String): Call<Ticket>
 }

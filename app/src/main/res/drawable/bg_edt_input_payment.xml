@@ -3,15 +3,16 @@
     <item android:state_selected="true">
         <shape>
             <stroke
-                android:width="2dp"
+                android:width="@dimen/margin_2.5"
                 android:color="@color/color_selecting" />
             <corners android:radius="@dimen/margin_5" />
+            <solid android:color="@color/gray" />
         </shape>
     </item>
     <item android:state_pressed="true">
         <shape>
             <stroke
-                android:width="2dp"
+                android:width="@dimen/margin_2.5"
                 android:color="@color/color_selecting" />
             <corners android:radius="@dimen/margin_5" />
         </shape>
@@ -19,7 +20,7 @@
     <item>
         <shape>
             <stroke
-                android:width="2dp"
+                android:width="@dimen/margin_2.5"
                 android:color="@color/gray_dark" />
             <corners android:radius="@dimen/margin_5" />
         </shape>

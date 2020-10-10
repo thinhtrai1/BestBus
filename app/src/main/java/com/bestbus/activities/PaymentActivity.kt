@@ -30,13 +30,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
 import java.io.FileOutputStream
-import java.util.*
 
 class PaymentActivity : BaseActivity() {
     private var viewSelecting: EditText? = null
     private var user: User? = null
-    private var colorNormal = 0
-    private var colorSelect = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,9 +43,6 @@ class PaymentActivity : BaseActivity() {
         edtName.setText(user?.name)
         edtEmail.setText(user?.email)
         edtPhone.setText(user?.phone)
-
-        colorNormal = ContextCompat.getColor(this, R.color.gray_dark)
-        colorSelect = ContextCompat.getColor(this, R.color.color_selecting)
 
         edtCreditCard.setOnClickListener {
             AlertDialog
@@ -93,10 +87,8 @@ class PaymentActivity : BaseActivity() {
 
     private fun newSelect(viewSelect: EditText) {
         viewSelecting?.isSelected = false
-        viewSelecting?.setTextColor(colorNormal)
         viewSelecting = viewSelect
         viewSelecting!!.isSelected = true
-        viewSelecting!!.setTextColor(colorSelect)
     }
 
     private fun booking() {
@@ -128,18 +120,17 @@ class PaymentActivity : BaseActivity() {
             }
         }
         val tourData = Gson().fromJson(intent.getStringExtra("tour"), Tour::class.java)
-        val mQRCode = UUID.randomUUID().toString() + UUID.randomUUID().toString() + UUID.randomUUID().toString()
         Util.apiClient.booking(
             user?.id,
             edtName.text.toString().trim(),
             edtEmail.text.toString().trim(),
             edtPhone.text.toString().trim(),
             tourData.id,
+            tourData.date,
             Gson().toJson(tourData.seatSelected!!),
             paymentMethod,
             paymentInformation,
-            tourData.amount,
-            mQRCode
+            tourData.amount
         ).enqueue(object : Callback<Ticket> {
             override fun onFailure(call: Call<Ticket>, t: Throwable) {
                 showToast(t.message)
@@ -151,23 +142,23 @@ class PaymentActivity : BaseActivity() {
                     response.body()?.let {
                         var seat = ""
                         for (i in it.seatList) {
-                            seat += (i / (tourData.count * 2) + 65).toChar().toString().plus(i % (tourData.count * 2) + 1) + ", "
+                            seat += (i / (it.tourData!!.count * 2) + 65).toChar().toString().plus(i % (it.tourData!!.count * 2) + 1) + ", "
                         }
                         val ticketInformation = """
                             ID: ${it.id}
                             Name: ${it.name}
                             Email: ${it.email}
                             Phone: ${it.phone}
-                            Bus ID: ${tourData.tourName}
+                            Bus: ${it.tourData!!.tourName}
                             Seat: ${seat.substring(0, seat.length - 2) + "."}
-                            From: ${tourData.fromCity}
-                            To: ${tourData.toCity}
-                            Start time: ${tourData.startTime}
-                            Start date: ${tourData.date}
-                            End time: ${Util.getEndTime(tourData.startTime, tourData.time)}
-                            End date: ${Util.getEndDate(tourData.date, tourData.startTime, tourData.time)}
+                            From: ${it.tourData.fromCity}
+                            To: ${it.tourData.toCity}
+                            Start time: ${it.tourData.startTime}
+                            Start date: ${it.date}
+                            End time: ${Util.getEndTime(it.tourData.startTime, it.tourData.time)}
+                            End date: ${Util.getEndDate(it.date, it.tourData.startTime, it.tourData.time)}
                             Time: ${getString(R.string.hours, Util.formatFloat(tourData.time))}
-                            Payment method: $paymentMethod
+                            Payment method: ${it.paymentMethod}
                             --------------------------
                             Total Amount: USD ${Util.formatFloat(it.totalAmount)}
                             """.trimIndent()
@@ -179,13 +170,11 @@ class PaymentActivity : BaseActivity() {
                             window?.attributes?.height = WindowManager.LayoutParams.MATCH_PARENT
                             show()
                             tvInformation.text = ticketInformation
-                            imvQRCode.setImageBitmap(generateQRCode(mQRCode))
-                            btnFinish.setOnClickListener { _ ->
+                            imvQRCode.setImageBitmap(generateQRCode(it.qrCode))
+                            layoutTicket.post {
                                 val bitmap = Bitmap.createBitmap(layoutTicket.width, layoutTicket.height, Bitmap.Config.ARGB_8888)
                                 val canvas = Canvas(bitmap)
                                 layoutTicket.draw(canvas)
-                                startActivity(Intent(this@PaymentActivity, HomeActivity::class.java)
-                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
                                 Thread(Runnable {
                                     val path = File(Constant.TICKET_FOLDER)
                                     if (!path.exists()) {
@@ -198,6 +187,10 @@ class PaymentActivity : BaseActivity() {
                                     outputStream.close()
                                 }).start()
                             }
+                            btnFinish.setOnClickListener { _ ->
+                                startActivity(Intent(this@PaymentActivity, HomeActivity::class.java)
+                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+                            }
                         }
                     }
                 } else {
@@ -208,7 +201,7 @@ class PaymentActivity : BaseActivity() {
         })
     }
 
-    private fun generateQRCode(data: String, size: Int = 256): Bitmap {
+    private fun generateQRCode(data: String?, size: Int = 256): Bitmap {
         val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
         try {
 //            val hints: MutableMap<EncodeHintType?, Any?> = EnumMap(EncodeHintType::class.java)
