@@ -58,7 +58,7 @@
     <string name="please_choose_payment_method">Please choose payment method</string>
     <string name="electronic_ticket">BESTBUS\nElectronic Ticket</string>
     <string name="are_your_sure">Are you sure?</string>
-    <string name="your_tickets"><u>Your tickets</u></string>
+    <string name="your_tickets"><u>My tickets</u></string>
     <string name="id">ID</string>
     <string name="leave">Leave</string>
     <string name="unknown">Unknown</string>
@@ -67,4 +67,12 @@
     <string name="scan_ticket"><u>Scan ticket</u></string>
     <string name="scan_more">Scan more</string>
     <string name="an_error_occurred">An error occurred</string>
+    <string name="bus">Bus</string>
+    <string name="start_time">Start time</string>
+    <string name="start_date">Start date</string>
+    <string name="end_time">End time</string>
+    <string name="end_date">End date</string>
+    <string name="time">Time</string>
+    <string name="payment_method">Payment method</string>
+    <string name="seat_map">Seat Map</string>
 </resources>

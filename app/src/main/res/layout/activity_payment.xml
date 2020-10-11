@@ -6,16 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".activities.PaymentActivity">
 
-    <TextView
+    <FrameLayout
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
-        android:background="@drawable/bg_home_header"
-        android:gravity="center"
-        android:text="@string/payment_information"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_18"
-        android:textStyle="bold" />
+        android:background="@drawable/bg_home_header">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/payment_information"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imvHome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_10"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_app"
+            android:contentDescription="@string/app_name" />
+    </FrameLayout>
 
     <View
         android:layout_width="match_parent"
@@ -53,6 +67,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/profile"
                 android:layout_width="match_parent"
+                app:cardCornerRadius="@dimen/margin_5"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_15"
                 android:layout_marginTop="@dimen/margin_15"
@@ -70,7 +85,8 @@
                         android:layout_height="@dimen/tour_list_item_header_icon"
                         android:src="@drawable/ic_app"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/your_name" />
 
                     <EditText
                         android:id="@+id/edtName"
@@ -104,7 +120,8 @@
                         android:layout_marginTop="@dimen/margin_10"
                         android:src="@drawable/ic_app"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ic1" />
+                        app:layout_constraintTop_toBottomOf="@id/ic1"
+                        android:contentDescription="@string/email" />
 
                     <EditText
                         android:id="@+id/edtEmail"
@@ -138,7 +155,8 @@
                         android:layout_marginTop="@dimen/margin_10"
                         android:src="@drawable/ic_app"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ic2" />
+                        app:layout_constraintTop_toBottomOf="@id/ic2"
+                        android:contentDescription="@string/phone" />
 
                     <EditText
                         android:id="@+id/edtPhone"
@@ -170,6 +188,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/margin_5"
                 android:layout_marginHorizontal="@dimen/margin_15"
                 android:layout_marginVertical="@dimen/margin_5">
 
@@ -192,20 +211,10 @@
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@id/ic1"
-                        android:layout_width="@dimen/tour_list_item_header_icon"
-                        android:layout_height="@dimen/tour_list_item_header_icon"
-                        android:src="@drawable/ic_app"
-                        app:layout_constraintBottom_toBottomOf="@id/edtCreditCard"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/edtCreditCard" />
-
                     <EditText
                         android:id="@+id/edtCreditCard"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/payment_edt_height"
-                        android:layout_marginStart="@dimen/margin_10"
                         android:layout_marginTop="@dimen/margin_20"
                         android:background="@drawable/bg_edt_input_payment"
                         android:focusable="false"
@@ -218,7 +227,7 @@
                         android:textSize="@dimen/text_13"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/ic1"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/spm" />
 
                     <View
@@ -259,19 +268,10 @@
                             android:textStyle="bold" />
                     </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:layout_width="@dimen/tour_list_item_header_icon"
-                        android:layout_height="@dimen/tour_list_item_header_icon"
-                        android:src="@drawable/ic_app"
-                        app:layout_constraintBottom_toBottomOf="@id/edtNetBanking"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/edtNetBanking" />
-
                     <EditText
                         android:id="@+id/edtNetBanking"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/payment_edt_height"
-                        android:layout_marginStart="@dimen/margin_10"
                         android:layout_marginTop="@dimen/payment_edt_title_height"
                         android:background="@drawable/bg_edt_input_payment"
                         android:focusable="false"
@@ -284,7 +284,7 @@
                         android:textSize="@dimen/text_13"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/ic1"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edtCreditCard" />
 
                     <View
@@ -325,19 +325,10 @@
                             android:textStyle="bold" />
                     </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:layout_width="@dimen/tour_list_item_header_icon"
-                        android:layout_height="@dimen/tour_list_item_header_icon"
-                        android:src="@drawable/ic_app"
-                        app:layout_constraintBottom_toBottomOf="@id/edtCodeShipping"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/edtCodeShipping" />
-
                     <EditText
                         android:id="@+id/edtCodeShipping"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/payment_edt_height"
-                        android:layout_marginStart="@dimen/margin_10"
                         android:layout_marginTop="@dimen/payment_edt_title_height"
                         android:background="@drawable/bg_edt_input_payment"
                         android:ellipsize="end"
@@ -350,7 +341,7 @@
                         android:textSize="@dimen/text_13"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/ic1"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edtNetBanking" />
 
                     <View
@@ -391,19 +382,10 @@
                             android:textStyle="bold" />
                     </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:layout_width="@dimen/tour_list_item_header_icon"
-                        android:layout_height="@dimen/tour_list_item_header_icon"
-                        android:src="@drawable/ic_app"
-                        app:layout_constraintBottom_toBottomOf="@id/edtAtBusStation"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/edtAtBusStation" />
-
                     <EditText
                         android:id="@+id/edtAtBusStation"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/payment_edt_height"
-                        android:layout_marginStart="@dimen/margin_10"
                         android:layout_marginTop="@dimen/payment_edt_title_height"
                         android:background="@drawable/bg_edt_input_payment"
                         android:ellipsize="end"
@@ -417,7 +399,7 @@
                         android:textSize="@dimen/text_13"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/ic1"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/edtCodeShipping" />
 
                     <View

@@ -65,7 +65,6 @@ class HomeActivity : BaseActivity() {
             viewScanTicket.visibility = View.GONE
             viewProfile.visibility = View.GONE
             viewUpdateProfile.visibility = View.GONE
-            viewChangePassword.visibility = View.GONE
             viewLogout.visibility = View.GONE
         }
 
@@ -200,16 +199,12 @@ class HomeActivity : BaseActivity() {
         viewUpdateProfile.setOnClickListener {
         }
 
-        viewChangePassword.setOnClickListener {
-        }
-
         viewLogout.setOnClickListener {
             viewProfile.visibility = View.GONE
             viewLogin.visibility = View.VISIBLE
             viewBookTour.visibility = View.VISIBLE
             viewYourTicket.visibility = View.VISIBLE
             viewUpdateProfile.visibility = View.GONE
-            viewChangePassword.visibility = View.GONE
             viewScanTicket.visibility = View.GONE
             viewLogout.visibility = View.GONE
             Util.sharedPreferences.edit().clear().apply()

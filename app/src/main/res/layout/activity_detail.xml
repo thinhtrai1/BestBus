@@ -7,16 +7,30 @@
     android:orientation="vertical"
     tools:context=".activities.DetailActivity">
 
-    <TextView
+    <FrameLayout
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
-        android:background="@drawable/bg_home_header"
-        android:gravity="center"
-        android:text="@string/tour_detail"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_18"
-        android:textStyle="bold" />
+        android:background="@drawable/bg_home_header">
+
+        <ImageView
+            android:id="@+id/imvHome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_10"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_app"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/tour_detail"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18"
+            android:textStyle="bold" />
+    </FrameLayout>
 
     <View
         android:layout_width="match_parent"

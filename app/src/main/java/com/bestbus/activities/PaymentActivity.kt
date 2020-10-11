@@ -44,6 +44,11 @@ class PaymentActivity : BaseActivity() {
         edtEmail.setText(user?.email)
         edtPhone.setText(user?.phone)
 
+        imvHome.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+        }
+
         edtCreditCard.setOnClickListener {
             AlertDialog
                 .Builder(this)
@@ -144,25 +149,22 @@ class PaymentActivity : BaseActivity() {
                         for (i in it.seatList) {
                             seat += (i / (it.tourData!!.count * 2) + 65).toChar().toString().plus(i % (it.tourData!!.count * 2) + 1) + ", "
                         }
-                        val ticketInformation = """
-                            ID: ${it.id}
-                            Name: ${it.name}
-                            Email: ${it.email}
-                            Phone: ${it.phone}
-                            Bus: ${it.tourData!!.tourName}
-                            Seat: ${seat.substring(0, seat.length - 2) + "."}
-                            From: ${it.tourData.fromCity}
-                            To: ${it.tourData.toCity}
-                            Start time: ${it.tourData.startTime}
-                            Start date: ${it.date}
-                            End time: ${Util.getEndTime(it.tourData.startTime, it.tourData.time)}
-                            End date: ${Util.getEndDate(it.date, it.tourData.startTime, it.tourData.time)}
-                            Time: ${getString(R.string.hours, Util.formatFloat(tourData.time))}
-                            Payment method: ${it.paymentMethod}
-                            --------------------------
-                            Total Amount: USD ${Util.formatFloat(it.totalAmount)}
-                            """.trimIndent()
-
+                        val ticketInformation = getString(R.string.id) + ": " + it.id + "\n" +
+                                getString(R.string.your_name) + ": " + it.name + "\n" +
+                                getString(R.string.email) + ": " + it.email + "\n" +
+                                getString(R.string.phone) + ": " + it.phone + "\n" +
+                                getString(R.string.bus) + ": " + it.tourData!!.tourName + "\n" +
+                                getString(R.string.seats) + " " + seat.substring(0, seat.length - 2) + "." + "\n" +
+                                getString(R.string.from) + ": " + it.tourData.fromCity + "\n" +
+                                getString(R.string.to) + ": " + it.tourData.toCity + "\n" +
+                                getString(R.string.start_time) + ": " + it.tourData.startTime + "\n" +
+                                getString(R.string.start_date) + ": " + it.date + "\n" +
+                                getString(R.string.end_time) + ": " + Util.getEndTime(it.tourData.startTime, it.tourData.time) + "\n" +
+                                getString(R.string.end_date) + ": " + Util.getEndDate(it.date, it.tourData.startTime, it.tourData.time) + "\n" +
+                                getString(R.string.time) + ": " + getString(R.string.hours, Util.formatFloat(tourData.time)) + "\n" +
+                                getString(R.string.payment_method) + ": " + it.paymentMethod + "\n" +
+                                "--------------------------" + "\n"
+                                getString(R.string.total_amount) + " USD " + Util.formatFloat(it.totalAmount)
                         Dialog(this@PaymentActivity).apply {
                             setContentView(R.layout.dialog_booking_success)
                             setCancelable(false)
@@ -187,7 +189,7 @@ class PaymentActivity : BaseActivity() {
                                     outputStream.close()
                                 }).start()
                             }
-                            btnFinish.setOnClickListener { _ ->
+                            btnFinish.setOnClickListener {
                                 startActivity(Intent(this@PaymentActivity, HomeActivity::class.java)
                                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
                             }

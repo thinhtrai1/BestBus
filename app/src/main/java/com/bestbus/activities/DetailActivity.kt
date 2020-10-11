@@ -52,5 +52,10 @@ class DetailActivity : AppCompatActivity() {
         btnBook.setOnClickListener {
             startActivity(Intent(this, PaymentActivity::class.java).putExtra("tour", Gson().toJson(tourData)))
         }
+
+        imvHome.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+        }
     }
 }

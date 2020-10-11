@@ -8,6 +8,30 @@
     android:orientation="vertical"
     tools:context=".activities.SelectSeatActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:background="@drawable/bg_home_header">
+
+        <ImageView
+            android:id="@+id/imvHome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_10"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_app"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/seat_map"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18"
+            android:textStyle="bold" />
+    </FrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvSeat"
         android:layout_width="match_parent"
@@ -23,10 +47,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_5"
         android:baselineAligned="false"
-        android:paddingStart="@dimen/margin_10"
-        android:paddingEnd="@dimen/margin_20">
+        android:paddingStart="@dimen/margin_5"
+        android:paddingEnd="@dimen/margin_15">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -102,11 +126,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="@dimen/margin_20"
-        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_5"
+        android:layout_marginBottom="@dimen/margin_15"
         android:background="@drawable/bg_btn_login"
-        android:paddingHorizontal="@dimen/home_avatar_size"
         android:fontFamily="sans-serif-condensed-medium"
+        android:paddingHorizontal="@dimen/home_avatar_size"
         android:paddingVertical="@dimen/margin_10"
         android:text="@string/select_seat"
         android:textColor="@color/color_white_green"

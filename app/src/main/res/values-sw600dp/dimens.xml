@@ -1,48 +1,35 @@
 <resources>
-<!--    <dimen name="text_14">17sp</dimen>-->
-<!--    <dimen name="text_15">18sp</dimen>-->
-<!--    <dimen name="text_18">22sp</dimen>-->
-<!--    <dimen name="text_normal">16sp</dimen>-->
-<!--    <dimen name="text_title_30">37sp</dimen>-->
+    <dimen name="text_10">12sp</dimen>
+    <dimen name="text_12">14.4sp</dimen>
+    <dimen name="text_13">15.6sp</dimen>
+    <dimen name="text_14">16.8sp</dimen>
+    <dimen name="text_15">18sp</dimen>
+    <dimen name="text_18">21.6sp</dimen>
+    <dimen name="text_25">30sp</dimen>
 
-<!--    <dimen name="load_more_view_bottom_space">45dp</dimen>-->
-<!--    <dimen name="first_margin">70dp</dimen>-->
-<!--    <dimen name="text_button">24sp</dimen>-->
+    <dimen name="margin_2.5">3dp</dimen>
+    <dimen name="margin_5">6dp</dimen>
+    <dimen name="margin_7.5">9dp</dimen>
+    <dimen name="margin_10">12dp</dimen>
+    <dimen name="margin_15">18dp</dimen>
+    <dimen name="margin_20">24dp</dimen>
 
-<!--    <dimen name="title_bar_text">29sp</dimen>-->
-<!--    <dimen name="title_bar_height">60dp</dimen>-->
-<!--    <dimen name="title_bar_padding">21dp</dimen>-->
-<!--    <dimen name="title_bar_back_padding">15dp</dimen>-->
+    <dimen name="title_bar_height">60dp</dimen>
 
-<!--    <dimen name="login_icon_width">36dp</dimen>-->
-<!--    <dimen name="login_icon_height_email">21dp</dimen>-->
-<!--    <dimen name="login_icon_height_password">28dp</dimen>-->
+    <dimen name="home_logo_size">120dp</dimen>
+    <dimen name="home_avatar_size">96dp</dimen>
+    <dimen name="home_menu_icon_size">48dp</dimen>
+    <dimen name="home_item_offer_width">150dp</dimen>
 
-<!--    <dimen name="sign_up_logo">170dp</dimen>-->
-<!--    <dimen name="sign_up_edt_text">21sp</dimen>-->
-<!--    <dimen name="sign_up_edt_height">50dp</dimen>-->
-<!--    <dimen name="sign_up_edt_drawable">24dp</dimen>-->
+    <dimen name="tour_list_item_header_icon">36dp</dimen>
 
-<!--    <dimen name="account_avatar_size">160dp</dimen>-->
-<!--    <dimen name="account_avatar_radius">80dp</dimen>-->
-<!--    <dimen name="account_text_small">15sp</dimen>-->
-<!--    <dimen name="account_logout_dialog_button">50dp</dimen>-->
+    <dimen name="search_tour_margin_top">72dp</dimen>
 
-<!--    <dimen name="account_edit_avatar_size">130dp</dimen>-->
-<!--    <dimen name="account_edit_avatar_radius">65dp</dimen>-->
+    <dimen name="select_seat_icon_size">36dp</dimen>
 
-<!--    <dimen name="preferences_drawable_left">24dp</dimen>-->
-<!--    <dimen name="preferences_switch_thumb">20dp</dimen>-->
-<!--    <dimen name="preferences_switch_height">24dp</dimen>-->
-<!--    <dimen name="preferences_switch_width">60dp</dimen>-->
-<!--    <dimen name="preferences_switch_child_thumb">18dp</dimen>-->
-<!--    <dimen name="preferences_switch_child_width">46dp</dimen>-->
-
-<!--    <dimen name="search_detail_name">32sp</dimen>-->
-<!--    <dimen name="search_detail_miles_width">80dp</dimen>-->
-<!--    <dimen name="search_detail_view_pager">300dp</dimen>-->
-<!--    <dimen name="search_detail_image_save">48dp</dimen>-->
-
-<!--    <dimen name="search_news_logo_size">64dp</dimen>-->
-<!--    <dimen name="search_news_logo_radius">32dp</dimen>-->
+    <dimen name="payment_edt_height">54dp</dimen>
+    <dimen name="payment_edt_title_height">28.8dp</dimen>
+    <dimen name="payment_edt_title_radius">14.4dp</dimen>
+    <dimen name="payment_image_qr_code_size">155dp</dimen>
+    <dimen name="home_avatar_size_half">48dp</dimen>
 </resources>
