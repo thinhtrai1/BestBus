@@ -38,7 +38,6 @@
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:padding="@dimen/margin_10"
-            android:text="ducthinhtrai@gmail.com"
             android:textColor="@color/black"
             android:textSize="@dimen/text_14" />
 
@@ -51,7 +50,6 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:padding="@dimen/margin_10"
-            android:text="q"
             android:textSize="@dimen/text_14" />
 
         <EditText

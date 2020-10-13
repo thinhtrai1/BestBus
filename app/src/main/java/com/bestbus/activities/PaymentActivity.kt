@@ -39,10 +39,11 @@ class PaymentActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
 
-        user = Gson().fromJson(Util.sharedPreferences.getString(Constant.PREF_USER, ""), User::class.java)
-        edtName.setText(user?.name)
-        edtEmail.setText(user?.email)
-        edtPhone.setText(user?.phone)
+        user = Gson().fromJson(Util.sharedPreferences.getString(Constant.PREF_USER, ""), User::class.java)?.apply {
+            edtName.setText(name)
+            edtEmail.setText(email)
+            edtPhone.setText(phone)
+        }
 
         imvHome.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java)
@@ -163,7 +164,7 @@ class PaymentActivity : BaseActivity() {
                                 getString(R.string.end_date) + ": " + Util.getEndDate(it.date, it.tourData.startTime, it.tourData.time) + "\n" +
                                 getString(R.string.time) + ": " + getString(R.string.hours, Util.formatFloat(tourData.time)) + "\n" +
                                 getString(R.string.payment_method) + ": " + it.paymentMethod + "\n" +
-                                "--------------------------" + "\n"
+                                "--------------------------" + "\n" +
                                 getString(R.string.total_amount) + " USD " + Util.formatFloat(it.totalAmount)
                         Dialog(this@PaymentActivity).apply {
                             setContentView(R.layout.dialog_booking_success)
@@ -173,6 +174,10 @@ class PaymentActivity : BaseActivity() {
                             show()
                             tvInformation.text = ticketInformation
                             imvQRCode.setImageBitmap(generateQRCode(it.qrCode))
+                            btnFinish.setOnClickListener {
+                                startActivity(Intent(this@PaymentActivity, HomeActivity::class.java)
+                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
+                            }
                             layoutTicket.post {
                                 val bitmap = Bitmap.createBitmap(layoutTicket.width, layoutTicket.height, Bitmap.Config.ARGB_8888)
                                 val canvas = Canvas(bitmap)
@@ -188,10 +193,6 @@ class PaymentActivity : BaseActivity() {
                                     outputStream.flush()
                                     outputStream.close()
                                 }).start()
-                            }
-                            btnFinish.setOnClickListener {
-                                startActivity(Intent(this@PaymentActivity, HomeActivity::class.java)
-                                    .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK))
                             }
                         }
                     }

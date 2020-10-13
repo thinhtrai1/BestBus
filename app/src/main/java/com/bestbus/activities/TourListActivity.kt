@@ -7,9 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bestbus.R
 import com.bestbus.adapters.TourListAdapter
 import com.bestbus.models.Tour
-import com.bestbus.utils.IOnItemClickListener
 import com.bestbus.utils.Util
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_tour_list.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -40,13 +38,7 @@ class TourListActivity : BaseActivity() {
                     response.body()?.let {
                         rcvTourList.visibility = View.VISIBLE
                         rcvTourList.layoutManager = LinearLayoutManager(this@TourListActivity, LinearLayoutManager.VERTICAL, false)
-                        rcvTourList.adapter = TourListAdapter(this@TourListActivity, it, object : IOnItemClickListener {
-                            override fun onClick(position: Int) {
-                                it[position].date = date
-                                startActivity(Intent(this@TourListActivity, SelectSeatActivity::class.java)
-                                    .putExtra("tour", Gson().toJson(it[position])))
-                            }
-                        })
+                        rcvTourList.adapter = TourListAdapter(this@TourListActivity, it, date)
                     }
                 } else {
                     showToast(response.errorBody()?.string())
