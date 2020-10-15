@@ -57,4 +57,18 @@ interface ApiInterface {
 
     @GET("scanTicket.php")
     fun scanTicket(@Query("qrCode") qrCode: String): Call<Ticket>
+
+    @FormUrlEncoded
+    @POST("addTour.php")
+    fun addTour(
+        @Field("tourName") tourName: String,
+        @Field("oldPrice") oldPrice: String,
+        @Field("price") price: String,
+        @Field("startTime") startTime: String,
+        @Field("time") time: String,
+        @Field("fromCity") fromCity: String?,
+        @Field("toCity") toCity: String,
+        @Field("seatQuantity") seatQuantity: String,
+        @Field("count") count: String,
+        @Field("vat") vat: String): Call<String>
 }

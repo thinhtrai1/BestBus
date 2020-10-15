@@ -30,7 +30,7 @@ class DetailActivity : AppCompatActivity() {
             tvFrom.text = it.fromCity
             tvTo.text = it.toCity
             val vat = it.price * it.seatSelected!!.size * it.vat
-            tvVAT.text = getString(R.string.additional_vat, Util.formatFloat(vat))
+            tvVAT.text = getString(R.string.additional_vat, Util.formatFloat(vat), "${(it.vat * 100).toInt()}%")
             it.amount = it.price * it.seatSelected!!.size + vat
             tvAmount.text = getString(R.string.usd, Util.formatFloat(it.amount))
             val seats = ArrayList<String>()

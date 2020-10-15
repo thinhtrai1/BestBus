@@ -361,6 +361,31 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/viewAddTour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_15"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="@dimen/margin_15">
+
+                <ImageView
+                    android:layout_width="@dimen/home_menu_icon_size"
+                    android:layout_height="@dimen/home_menu_icon_size"
+                    android:contentDescription="@string/logout"
+                    android:src="@drawable/ic_app" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:text="@string/add_tour_underline"
+                    android:textColor="#000"
+                    android:textSize="@dimen/text_14"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/viewLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

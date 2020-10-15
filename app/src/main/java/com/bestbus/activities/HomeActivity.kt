@@ -58,18 +58,17 @@ class HomeActivity : BaseActivity() {
             }
             viewLogin.visibility = View.GONE
             if (user.isAdmin == 1) {
-                viewScanTicket.visibility = View.VISIBLE
                 viewBookTour.visibility = View.GONE
                 viewYourTicket.visibility = View.GONE
             } else {
                 viewScanTicket.visibility = View.GONE
-                viewBookTour.visibility = View.VISIBLE
-                viewYourTicket.visibility = View.VISIBLE
+                viewAddTour.visibility = View.GONE
             }
         } else {
             viewScanTicket.visibility = View.GONE
             viewProfile.visibility = View.GONE
             viewUpdateProfile.visibility = View.GONE
+            viewAddTour.visibility = View.GONE
             viewLogout.visibility = View.GONE
         }
 
@@ -203,6 +202,10 @@ class HomeActivity : BaseActivity() {
 
         viewUpdateProfile.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java).putExtra("isUpdate", true))
+        }
+
+        viewAddTour.setOnClickListener {
+            startActivity(Intent(this, AddTourActivity::class.java))
         }
 
         viewLogout.setOnClickListener {

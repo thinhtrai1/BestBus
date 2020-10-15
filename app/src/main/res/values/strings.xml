@@ -41,7 +41,7 @@
     <string name="selecting">Selecting</string>
     <string name="tour_detail">Tour Detail</string>
     <string name="seats">Seat(s):</string>
-    <string name="additional_vat">Additional VAT tax per ticket is: $%1$s</string>
+    <string name="additional_vat">Additional VAT tax per ticket is: $%1$s (%2$s)</string>
     <string name="total_amount">Total Amount:</string>
     <string name="usd">USD %1$s</string>
     <string name="book_now">BOOK NOW</string>
@@ -78,4 +78,12 @@
     <string name="payment_method">Payment method</string>
     <string name="seat_map">Seat Map</string>
     <string name="save">Save</string>
+    <string name="add_tour_underline"><u>Add tour</u></string>
+    <string name="add_tour">Add Tour</string>
+    <string name="tour_name">Tour name</string>
+    <string name="old_price">Old price</string>
+    <string name="price">Price</string>
+    <string name="vat">VAT</string>
+    <string name="count">Count</string>
+    <string name="seat_quantity">Seat quantity</string>
 </resources>
