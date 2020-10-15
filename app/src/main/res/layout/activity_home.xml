@@ -33,6 +33,7 @@
                     android:layout_marginStart="@dimen/margin_10"
                     android:layout_marginTop="@dimen/margin_10"
                     android:adjustViewBounds="true"
+                    android:contentDescription="@string/book_tour"
                     android:src="@drawable/ic_app" />
 
                 <ImageView
@@ -42,6 +43,7 @@
                     android:layout_marginTop="@dimen/margin_10"
                     android:layout_marginEnd="@dimen/margin_10"
                     android:layout_weight="1"
+                    android:contentDescription="@null"
                     android:scaleType="fitEnd"
                     android:src="@drawable/ic_app" />
             </LinearLayout>
@@ -51,6 +53,7 @@
                 android:layout_width="@dimen/home_logo_size"
                 android:layout_height="@dimen/home_logo_size"
                 android:layout_marginBottom="@dimen/margin_15"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_app"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -62,6 +65,7 @@
                 android:layout_width="@dimen/home_logo_size"
                 android:layout_height="@dimen/home_logo_size"
                 android:layout_marginBottom="@dimen/margin_15"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_app"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -73,6 +77,7 @@
                 android:layout_width="@dimen/home_logo_size"
                 android:layout_height="@dimen/home_logo_size"
                 android:layout_marginBottom="@dimen/margin_15"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_app"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -84,6 +89,7 @@
                 android:layout_width="@dimen/home_logo_size"
                 android:layout_height="@dimen/home_logo_size"
                 android:layout_marginBottom="@dimen/margin_15"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_app"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -132,11 +138,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:layout_marginStart="@dimen/margin_5"
                 android:layout_marginTop="@dimen/margin_5"
                 android:fontFamily="serif"
                 android:text="@string/offers"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_18"
                 android:textStyle="bold" />
 
@@ -148,8 +154,8 @@
                     android:id="@+id/rcvOffers"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingBottom="@dimen/margin_5"
                     android:paddingHorizontal="@dimen/margin_5"
+                    android:paddingBottom="@dimen/margin_5"
                     android:visibility="gone" />
 
                 <ProgressBar
@@ -182,11 +188,19 @@
             android:orientation="vertical"
             android:padding="@dimen/margin_15">
 
-            <ImageView
-                android:id="@+id/imvAvatar"
+            <androidx.cardview.widget.CardView
                 android:layout_width="@dimen/home_avatar_size"
                 android:layout_height="@dimen/home_avatar_size"
-                android:src="@drawable/ic_app" />
+                app:cardCornerRadius="@dimen/home_avatar_size_half"
+                app:cardElevation="0dp">
+
+                <ImageView
+                    android:id="@+id/imvAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_app" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/tvName"
@@ -231,6 +245,7 @@
                 <ImageView
                     android:layout_width="@dimen/home_menu_icon_size"
                     android:layout_height="@dimen/home_menu_icon_size"
+                    android:contentDescription="@string/scan_ticket"
                     android:src="@drawable/ic_app" />
 
                 <TextView
@@ -256,6 +271,7 @@
                     android:id="@+id/iconBookTour"
                     android:layout_width="@dimen/home_menu_icon_size"
                     android:layout_height="@dimen/home_menu_icon_size"
+                    android:contentDescription="@string/book_tour"
                     android:src="@drawable/ic_app" />
 
                 <TextView
@@ -281,6 +297,7 @@
                     android:id="@+id/iconLogin"
                     android:layout_width="@dimen/home_menu_icon_size"
                     android:layout_height="@dimen/home_menu_icon_size"
+                    android:contentDescription="@string/login_register"
                     android:src="@drawable/ic_app" />
 
                 <TextView
@@ -305,6 +322,7 @@
                 <ImageView
                     android:layout_width="@dimen/home_menu_icon_size"
                     android:layout_height="@dimen/home_menu_icon_size"
+                    android:contentDescription="@string/your_tickets"
                     android:src="@drawable/ic_app" />
 
                 <TextView
@@ -329,6 +347,7 @@
                 <ImageView
                     android:layout_width="@dimen/home_menu_icon_size"
                     android:layout_height="@dimen/home_menu_icon_size"
+                    android:contentDescription="@string/update_profile"
                     android:src="@drawable/ic_app" />
 
                 <TextView
@@ -353,6 +372,7 @@
                 <ImageView
                     android:layout_width="@dimen/home_menu_icon_size"
                     android:layout_height="@dimen/home_menu_icon_size"
+                    android:contentDescription="@string/logout"
                     android:src="@drawable/ic_app" />
 
                 <TextView
