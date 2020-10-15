@@ -1,6 +1,8 @@
 package com.bestbus.utils
 
 import com.bestbus.models.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -17,6 +19,17 @@ interface ApiInterface {
         @Field("email") email: String,
         @Field("password") password: String,
         @Field("name") name: String): Call<User>
+
+    @Multipart
+    @POST("updateProfile.php")
+    fun updateProfile(
+        @Part("userId") userId: RequestBody,
+        @Part("name") address: RequestBody,
+        @Part("email") contact_no: RequestBody,
+        @Part("phone") password: RequestBody,
+        @Part("password") latitude: RequestBody,
+        @Part image: MultipartBody.Part?
+    ): Call<User>
 
     @GET("getTour.php")
     fun getTour(@Query("from") from: String,

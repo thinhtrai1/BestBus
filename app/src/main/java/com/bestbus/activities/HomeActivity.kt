@@ -27,6 +27,7 @@ import com.bestbus.models.User
 import com.bestbus.utils.Constant
 import com.bestbus.utils.Util
 import com.google.gson.Gson
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -46,6 +47,10 @@ class HomeActivity : BaseActivity() {
         if (user != null) {
             tvName.text = user.name
             tvEmail.text = user.email
+            if (user.image != null) {
+                Picasso.get().load(Util.BASE_URL + user.image)
+                    .resize(400, 400).centerCrop().placeholder(R.drawable.ic_app).into(imvAvatar)
+            }
             if (user.phone.isNullOrEmpty()) {
                 tvPhone.visibility = View.GONE
             } else {
@@ -197,6 +202,7 @@ class HomeActivity : BaseActivity() {
         }
 
         viewUpdateProfile.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java).putExtra("isUpdate", true))
         }
 
         viewLogout.setOnClickListener {

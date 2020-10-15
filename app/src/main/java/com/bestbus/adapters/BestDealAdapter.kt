@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bestbus.R
 import com.bestbus.models.Deal
+import com.bestbus.utils.Util
 import com.squareup.picasso.Picasso
 
 class BestDealAdapter(private val context: Activity, private val mDeals: ArrayList<Deal>) : RecyclerView.Adapter<BestDealAdapter.ViewHolder>() {
@@ -47,7 +48,7 @@ class BestDealAdapter(private val context: Activity, private val mDeals: ArrayLi
             holder.tvDescription.text = it.description
             Picasso
                 .get()
-                .load(it.image)
+                .load(Util.BASE_URL + it.image)
                 .resize(1000, 1000)
                 .centerCrop()
                 .into(holder.imageView)

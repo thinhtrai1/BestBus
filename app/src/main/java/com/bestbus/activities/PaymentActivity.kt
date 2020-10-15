@@ -10,8 +10,8 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.view.WindowManager
-import android.widget.EditText
+import android.view.WindowManager.LayoutParams
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.bestbus.R
 import com.bestbus.models.Ticket
@@ -32,7 +32,7 @@ import java.io.File
 import java.io.FileOutputStream
 
 class PaymentActivity : BaseActivity() {
-    private var viewSelecting: EditText? = null
+    private var viewSelecting: TextView? = null
     private var user: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,7 +91,7 @@ class PaymentActivity : BaseActivity() {
         }
     }
 
-    private fun newSelect(viewSelect: EditText) {
+    private fun newSelect(viewSelect: TextView) {
         viewSelecting?.isSelected = false
         viewSelecting = viewSelect
         viewSelecting!!.isSelected = true
@@ -167,10 +167,11 @@ class PaymentActivity : BaseActivity() {
                                 "--------------------------" + "\n" +
                                 getString(R.string.total_amount) + " USD " + Util.formatFloat(it.totalAmount)
                         Dialog(this@PaymentActivity).apply {
+                            window?.setFlags(LayoutParams.FLAG_SECURE, LayoutParams.FLAG_SECURE)
                             setContentView(R.layout.dialog_booking_success)
                             setCancelable(false)
-                            window?.attributes?.width = WindowManager.LayoutParams.MATCH_PARENT
-                            window?.attributes?.height = WindowManager.LayoutParams.MATCH_PARENT
+                            window?.attributes?.width = LayoutParams.MATCH_PARENT
+                            window?.attributes?.height = LayoutParams.MATCH_PARENT
                             show()
                             tvInformation.text = ticketInformation
                             imvQRCode.setImageBitmap(generateQRCode(it.qrCode))

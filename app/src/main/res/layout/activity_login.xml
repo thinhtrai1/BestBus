@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,13 +13,22 @@
         android:layout_height="0dp"
         android:layout_weight="3">
 
-        <ImageView
-            android:id="@+id/imvLogo"
+        <androidx.cardview.widget.CardView
             android:layout_width="@dimen/home_logo_size"
             android:layout_height="@dimen/home_logo_size"
             android:layout_gravity="bottom|center_horizontal"
-            android:src="@drawable/ic_app"
-            android:transitionName="iconLogo" />
+            app:cardBackgroundColor="@color/black"
+            app:cardCornerRadius="@dimen/home_logo_size_half"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/imvLogo"
+                android:layout_width="@dimen/home_logo_size"
+                android:layout_height="@dimen/home_logo_size"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_app"
+                android:transitionName="iconLogo" />
+        </androidx.cardview.widget.CardView>
     </FrameLayout>
 
     <LinearLayout
@@ -31,9 +41,33 @@
         android:paddingHorizontal="@dimen/margin_15">
 
         <EditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_register"
+            android:hint="@string/your_name"
+            android:inputType="textCapWords"
+            android:padding="@dimen/margin_10"
+            android:textSize="@dimen/text_14"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/edtPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:background="@drawable/bg_btn_register"
+            android:hint="@string/phone"
+            android:inputType="phone"
+            android:padding="@dimen/margin_10"
+            android:textSize="@dimen/text_14"
+            android:visibility="gone" />
+
+        <EditText
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
             android:background="@drawable/bg_btn_register"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
@@ -53,13 +87,13 @@
             android:textSize="@dimen/text_14" />
 
         <EditText
-            android:id="@+id/edtName"
+            android:id="@+id/edtConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_10"
             android:background="@drawable/bg_btn_register"
-            android:hint="@string/your_name"
-            android:inputType="textCapSentences"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
             android:padding="@dimen/margin_10"
             android:textSize="@dimen/text_14"
             android:visibility="gone" />

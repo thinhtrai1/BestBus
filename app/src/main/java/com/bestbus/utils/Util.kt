@@ -9,12 +9,13 @@ import java.util.*
 object Util {
     lateinit var sharedPreferences: SharedPreferences
 
+    const val BASE_URL = "http://ducthinh-bestbus.000webhostapp.com/"
     private var retrofit: ApiInterface? = null
     val apiClient: ApiInterface
         get() {
             if (retrofit == null) {
                 retrofit = Retrofit.Builder()
-                    .baseUrl("http://ducthinh-bestbus.000webhostapp.com/")
+                    .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(ApiInterface::class.java)

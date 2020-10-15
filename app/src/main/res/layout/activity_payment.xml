@@ -382,17 +382,15 @@
                             android:textStyle="bold" />
                     </androidx.cardview.widget.CardView>
 
-                    <EditText
+                    <TextView
                         android:id="@+id/edtAtBusStation"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/payment_edt_height"
                         android:layout_marginTop="@dimen/payment_edt_title_height"
                         android:background="@drawable/bg_edt_input_payment"
-                        android:ellipsize="end"
-                        android:focusable="false"
+                        android:singleLine="true"
                         android:gravity="bottom"
                         android:hint="@string/get_the_pre_order"
-                        android:inputType="text"
                         android:paddingHorizontal="@dimen/margin_10"
                         android:paddingBottom="@dimen/margin_5"
                         android:textColor="@color/gray_dark"
