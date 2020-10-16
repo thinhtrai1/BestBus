@@ -7,6 +7,7 @@ import com.bestbus.R
 import com.bestbus.utils.Util
 import kotlinx.android.synthetic.main.activity_add_tour.*
 import kotlinx.android.synthetic.main.dialog_time_picker.*
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,6 +37,7 @@ class AddTourActivity : BaseActivity() {
         }
 
         btnConfirm.setOnClickListener {
+            showLoading(true)
             if (!isValid()) {
                 return@setOnClickListener
             }
@@ -51,15 +53,15 @@ class AddTourActivity : BaseActivity() {
                 edtSeatQuantity.text.toString(),
                 edtCount.text.toString(),
                 edtVAT.text.toString()
-            ).enqueue(object : Callback<String> {
-                override fun onFailure(call: Call<String>, t: Throwable) {
+            ).enqueue(object : Callback<ResponseBody> {
+                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     showLoading(false)
                     showToast(t.message)
                 }
 
-                override fun onResponse(call: Call<String>, response: Response<String>) {
+                override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
-                        showToast(response.body())
+                        showToast(response.body()?.string())
                     } else {
                         showToast(response.errorBody()?.string())
                     }
@@ -75,17 +77,15 @@ class AddTourActivity : BaseActivity() {
             edtTourName.error = ""
             b = false
         }
+        if (edtOldPrice.text.isBlank()) {
+            edtOldPrice.setText(edtPrice.text.toString())
+        }
         if (edtPrice.text.isBlank()) {
             edtPrice.error = ""
             b = false
         }
-        if (edtOldPrice.text.isBlank()) {
-            edtOldPrice.setText(edtTourName.text.toString())
-            b = false
-        }
         if (edtVAT.text.isBlank()) {
             edtVAT.setText("0.05")
-            b = false
         }
         if (edtStartTime.text.isBlank()) {
             edtStartTime.error = ""
@@ -109,7 +109,6 @@ class AddTourActivity : BaseActivity() {
         }
         if (edtCount.text.isBlank()) {
             edtCount.setText("3")
-            b = false
         }
         return b
     }
