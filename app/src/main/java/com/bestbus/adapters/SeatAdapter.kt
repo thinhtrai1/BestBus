@@ -48,9 +48,15 @@ class SeatAdapter (
             }
         }
 
-        holder.tvSeat1.text = (p1 / (count * 2) + 65).toChar().toString().plus(p1 % (count * 2) + 1)
+        var s1: Int = p1 / (count * 2) + 65
+        var s2: Int = p2 / (count * 2) + 65
+        if (s1 > 90) {
+            s1 += 6
+            s2 += 6
+        }
+        holder.tvSeat1.text = s1.toChar().toString().plus(p1 % (count * 2) + 1)
         if (p2 < seatQuantity) {
-            holder.tvSeat2.text = (p2 / (count * 2) + 65).toChar().toString().plus(p2 % (count * 2) + 1)
+            holder.tvSeat2.text = s2.toChar().toString().plus(p2 % (count * 2) + 1)
             holder.cvSeat2.visibility = View.VISIBLE
             when {
                 selectingList.contains(p2) -> {

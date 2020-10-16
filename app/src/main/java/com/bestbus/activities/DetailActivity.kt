@@ -35,7 +35,11 @@ class DetailActivity : AppCompatActivity() {
             tvAmount.text = getString(R.string.usd, Util.formatFloat(it.amount))
             val seats = ArrayList<String>()
             for (i in it.seatSelected!!) {
-                seats.add((i / (it.count * 2) + 65).toChar().toString().plus(i % (it.count * 2) + 1))
+                var s: Int = i / (it.count * 2) + 65
+                if (s > 90) {
+                    s += 6
+                }
+                seats.add(s.toChar().toString().plus(i % (it.count * 2) + 1))
             }
             val count = DisplayMetrics().apply {
                 if (Build.VERSION.SDK_INT >= 29) {

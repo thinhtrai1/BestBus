@@ -73,7 +73,11 @@ class ScanTicketActivity : AppCompatActivity(), ZXingScannerView.ResultHandler, 
                 response.body()!!.let {
                     var seat = ""
                     for (i in it.seatList) {
-                        seat += (i / (it.tourData!!.count * 2) + 65).toChar().toString().plus(i % (it.tourData!!.count * 2) + 1) + ", "
+                        var s: Int = i / (it.tourData!!.count * 2) + 65
+                        if (s > 90) {
+                            s += 6
+                        }
+                        seat += s.toChar().toString().plus(i % (it.tourData!!.count * 2) + 1) + ", "
                     }
                     val ticketInformation = """
                             ID: ${it.id}

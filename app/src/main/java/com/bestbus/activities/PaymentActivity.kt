@@ -152,7 +152,11 @@ class PaymentActivity : BaseActivity() {
                                 seat = seat.substring(0, seat.length - 2) + "... (+${it.seatList.size - 15})  "
                                 break
                             } else {
-                                seat += (it.seatList[i] / (it.tourData!!.count * 2) + 65).toChar().toString().plus(it.seatList[i] % (it.tourData!!.count * 2) + 1) + ", "
+                                var s: Int = it.seatList[i] / (it.tourData!!.count * 2) + 65
+                                if (s > 90) {
+                                    s += 6
+                                }
+                                seat += s.toChar().toString().plus(it.seatList[i] % (it.tourData!!.count * 2) + 1) + ", "
                             }
                         }
                         val ticketInformation = getString(R.string.id) + ": " + it.id + "\n" +
