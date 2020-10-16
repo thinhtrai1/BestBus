@@ -147,8 +147,13 @@ class PaymentActivity : BaseActivity() {
                 if (response.isSuccessful) {
                     response.body()?.let {
                         var seat = ""
-                        for (i in it.seatList) {
-                            seat += (i / (it.tourData!!.count * 2) + 65).toChar().toString().plus(i % (it.tourData!!.count * 2) + 1) + ", "
+                        for (i in 0 until it.seatList.size) {
+                            if (i == 15) {
+                                seat = seat.substring(0, seat.length - 2) + "... (+${it.seatList.size - 15})  "
+                                break
+                            } else {
+                                seat += (it.seatList[i] / (it.tourData!!.count * 2) + 65).toChar().toString().plus(it.seatList[i] % (it.tourData!!.count * 2) + 1) + ", "
+                            }
                         }
                         val ticketInformation = getString(R.string.id) + ": " + it.id + "\n" +
                                 getString(R.string.your_name) + ": " + it.name + "\n" +

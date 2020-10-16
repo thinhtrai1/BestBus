@@ -24,10 +24,10 @@ object Util {
         }
 
     fun formatFloat(input: Float): String {
-        return if (input == input.toLong().toFloat())
-            String.format("%d", input.toLong())
+        return if (input == input.toInt().toFloat())
+            input.toInt().toString()
         else
-            String.format("%s", input)
+            String.format(Locale.US, "%.2f", input).toFloat().toString()
     }
 
     fun getEndTime(startTime: String?, duration: Float): String? {

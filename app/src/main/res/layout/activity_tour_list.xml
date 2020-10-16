@@ -10,14 +10,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_home_header"
-        android:padding="@dimen/margin_10">
+        android:background="@drawable/bg_home_header" >
 
         <TextView
             android:id="@+id/cross"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="  -  "
+            android:layout_marginTop="@dimen/margin_5"
             android:textColor="@color/white"
             android:textSize="@dimen/text_18"
             android:textStyle="bold"
@@ -37,7 +37,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/cross"
             app:layout_constraintStart_toEndOf="@id/imvHome"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/cross" />
 
         <TextView
             android:id="@+id/tvTo"
@@ -45,22 +45,22 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:textColor="@color/white"
+            android:layout_marginEnd="@dimen/margin_5"
             android:textSize="@dimen/text_15"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cross"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/cross" />
 
         <TextView
             android:id="@+id/tvDate"
-            android:layout_width="0dp"
-            app:layout_constraintStart_toEndOf="@id/imvHome"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_5"
             android:gravity="center_horizontal"
             android:textColor="@color/white"
+            android:layout_marginBottom="@dimen/margin_5"
             android:textSize="@dimen/text_14"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cross" />
 
         <ImageView
@@ -68,7 +68,9 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:adjustViewBounds="true"
-            app:layout_constraintTop_toTopOf="@id/tvFrom"
+            android:layout_marginStart="@dimen/margin_10"
+            android:layout_marginVertical="@dimen/margin_5"
+            app:layout_constraintTop_toTopOf="@id/cross"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/tvDate"
             android:src="@drawable/ic_app"
