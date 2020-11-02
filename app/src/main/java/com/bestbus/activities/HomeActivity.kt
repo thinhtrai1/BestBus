@@ -43,7 +43,7 @@ class HomeActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val user = Gson().fromJson<User?>(Util.sharedPreferences.getString(Constant.PREF_USER, null), User::class.java)
+        val user = Gson().fromJson(Util.sharedPreferences.getString(Constant.PREF_USER, null), User::class.java)
         if (user != null) {
             tvName.text = user.name
             tvEmail.text = user.email
@@ -74,7 +74,7 @@ class HomeActivity : BaseActivity() {
 
         Util.apiClient.getDeal().enqueue(object : Callback<ArrayList<Deal>> {
             override fun onFailure(call: Call<ArrayList<Deal>>, t: Throwable) {
-                showToast(t.message)
+                showToast(t)
                 progressBestDeal.visibility = View.GONE
             }
 
@@ -95,7 +95,7 @@ class HomeActivity : BaseActivity() {
 
         Util.apiClient.getOffer().enqueue(object : Callback<ArrayList<Offer>> {
             override fun onFailure(call: Call<ArrayList<Offer>>, t: Throwable) {
-                showToast(t.message)
+                showToast(t)
                 progressOffer.visibility = View.GONE
             }
 

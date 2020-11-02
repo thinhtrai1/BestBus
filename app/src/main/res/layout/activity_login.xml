@@ -26,6 +26,7 @@
                 android:layout_width="@dimen/home_logo_size"
                 android:layout_height="@dimen/home_logo_size"
                 android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_app"
                 android:transitionName="iconLogo" />
         </androidx.cardview.widget.CardView>

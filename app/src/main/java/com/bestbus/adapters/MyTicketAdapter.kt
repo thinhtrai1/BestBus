@@ -17,7 +17,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class MyTicketAdapter(private val context: Context, private val mTickets: ArrayList<File>) : RecyclerView.Adapter<MyTicketAdapter.ViewHolder>() {
-    private val mDateTimeFormat = SimpleDateFormat("EEE, dd MMM yyyy HH:mm", Locale.US)
+    private val mDateTimeFormat = SimpleDateFormat("HH:mm, EEE, dd MMM yyyy", Locale.US)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_rcv_my_ticket, parent, false))

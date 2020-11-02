@@ -139,7 +139,7 @@ class PaymentActivity : BaseActivity() {
             tourData.amount
         ).enqueue(object : Callback<Ticket> {
             override fun onFailure(call: Call<Ticket>, t: Throwable) {
-                showToast(t.message)
+                showToast(t)
                 showLoading(false)
             }
 
@@ -167,10 +167,11 @@ class PaymentActivity : BaseActivity() {
                                 getString(R.string.seats) + " " + seat.substring(0, seat.length - 2) + "." + "\n" +
                                 getString(R.string.from) + ": " + it.tourData.fromCity + "\n" +
                                 getString(R.string.to) + ": " + it.tourData.toCity + "\n" +
-                                getString(R.string.start_time) + ": " + it.tourData.startTime + "\n" +
-                                getString(R.string.start_date) + ": " + it.date + "\n" +
-                                getString(R.string.end_time) + ": " + Util.getEndTime(it.tourData.startTime, it.tourData.time) + "\n" +
-                                getString(R.string.end_date) + ": " + Util.getEndDate(it.date, it.tourData.startTime, it.tourData.time) + "\n" +
+                                getString(R.string.start_time) + ": " + it.tourData.startTime + ", " + it.date + "\n" +
+//                                getString(R.string.start_date) + ": " + it.date + "\n" +
+                                getString(R.string.end_time) + ": " + Util.getEndTime(it.tourData.startTime, it.tourData.time) +
+                                ", " + Util.getEndDate(it.date, it.tourData.startTime, it.tourData.time) + "\n" +
+//                                getString(R.string.end_date) + ": " + Util.getEndDate(it.date, it.tourData.startTime, it.tourData.time) + "\n" +
                                 getString(R.string.time) + ": " + getString(R.string.hours, Util.formatFloat(tourData.time)) + "\n" +
                                 getString(R.string.payment_method) + ": " + it.paymentMethod + "\n" +
                                 "--------------------------" + "\n" +

@@ -15,7 +15,7 @@ object Util {
         get() {
             if (retrofit == null) {
                 retrofit = Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(BASE_URL + "api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(ApiInterface::class.java)
@@ -99,7 +99,7 @@ object Util {
 //                ).enqueue(object : Callback<ResponseBody> {
 //                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
 //                        showLoading(false)
-//                        showToast(t.message)
+//                        showToast(t)
 //                    }
 //
 //                    override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {

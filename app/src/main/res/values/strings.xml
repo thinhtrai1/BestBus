@@ -86,4 +86,5 @@
     <string name="vat">VAT</string>
     <string name="count">Count</string>
     <string name="seat_quantity">Seat quantity</string>
+    <string name="please_check_the_network_connection">Please check the network connection</string>
 </resources>

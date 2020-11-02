@@ -56,7 +56,7 @@ class AddTourActivity : BaseActivity() {
             ).enqueue(object : Callback<ResponseBody> {
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                     showLoading(false)
-                    showToast(t.message)
+                    showToast(t)
                 }
 
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {

@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.bestbus.R
+import java.io.IOException
 
 abstract class BaseActivity : AppCompatActivity() {
     private lateinit var mProgressBar: Dialog
@@ -18,15 +20,23 @@ abstract class BaseActivity : AppCompatActivity() {
         mProgressBar.setCancelable(false)
     }
 
-    fun showToast(message: String?) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
-    fun showLoading(isLoading: Boolean) {
+    protected fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             mProgressBar.show()
         } else {
             mProgressBar.dismiss()
+        }
+    }
+
+    protected fun showToast(message: String?) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    protected fun showToast(throwable: Throwable) {
+        if (throwable is IOException) {
+            showToast(getString(R.string.please_check_the_network_connection))
+        } else {
+            showToast(throwable.message)
         }
     }
 }

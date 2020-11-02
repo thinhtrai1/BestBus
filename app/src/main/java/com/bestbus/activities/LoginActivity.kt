@@ -134,7 +134,7 @@ class LoginActivity : BaseActivity(), Callback<User> {
     }
 
     override fun onFailure(call: Call<User>, t: Throwable) {
-        showToast(t.message)
+        showToast(t)
         showLoading(false)
     }
 

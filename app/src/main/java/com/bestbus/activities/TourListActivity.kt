@@ -29,7 +29,7 @@ class TourListActivity : BaseActivity() {
         Util.apiClient.getTour(from, to).enqueue(object : Callback<ArrayList<Tour>> {
             override fun onFailure(call: Call<ArrayList<Tour>>, t: Throwable) {
                 progressBar.visibility = View.GONE
-                showToast(t.message)
+                showToast(t)
             }
 
             override fun onResponse(call: Call<ArrayList<Tour>>, response: Response<ArrayList<Tour>>) {
