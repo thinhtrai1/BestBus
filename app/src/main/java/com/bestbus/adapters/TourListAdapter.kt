@@ -40,14 +40,14 @@ class TourListAdapter (private val context: Context, private val mTours: ArrayLi
         }
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvName: TextView = view.findViewById(R.id.tvName)
-        val tvPriceOld: TextView = view.findViewById(R.id.tvPriceOld)
-        val tvPrice: TextView = view.findViewById(R.id.tvPrice)
-        val tvStartTime: TextView = view.findViewById(R.id.tvStartTime)
-        val tvTime: TextView = view.findViewById(R.id.tvTime)
-        val tvEndTime: TextView = view.findViewById(R.id.tvEndTime)
-        val tvFrom: TextView = view.findViewById(R.id.tvFrom)
-        val tvTo: TextView = view.findViewById(R.id.tvTo)
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        internal val tvName: TextView = view.findViewById(R.id.tvName)
+        internal val tvPriceOld: TextView = view.findViewById(R.id.tvPriceOld)
+        internal val tvPrice: TextView = view.findViewById(R.id.tvPrice)
+        internal val tvStartTime: TextView = view.findViewById(R.id.tvStartTime)
+        internal val tvTime: TextView = view.findViewById(R.id.tvTime)
+        internal val tvEndTime: TextView = view.findViewById(R.id.tvEndTime)
+        internal val tvFrom: TextView = view.findViewById(R.id.tvFrom)
+        internal val tvTo: TextView = view.findViewById(R.id.tvTo)
     }
 }

@@ -55,10 +55,10 @@ class BestDealAdapter(private val context: Activity, private val mDeals: ArrayLi
         }
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvDiscount: TextView = view.findViewById(R.id.tvDiscount)
-        val tvDescription: TextView = view.findViewById(R.id.tvDescription)
-        val imageView: ImageView = view.findViewById(R.id.imageView)
-        val viewSpaceStart: View = view.findViewById(R.id.viewSpaceStart)
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        internal val tvDiscount: TextView = view.findViewById(R.id.tvDiscount)
+        internal val tvDescription: TextView = view.findViewById(R.id.tvDescription)
+        internal val imageView: ImageView = view.findViewById(R.id.imageView)
+        internal val viewSpaceStart: View = view.findViewById(R.id.viewSpaceStart)
     }
 }

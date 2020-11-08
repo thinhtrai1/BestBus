@@ -14,7 +14,7 @@ class SeatAdapter (
     private val context: Activity,
     private val seatQuantity: Int,
     private val seatBooked: ArrayList<Int>?,
-    private val count: Int,
+    count: Int,
     screenWidth: Int): RecyclerView.Adapter<SeatAdapter.ViewHolder>() {
 
     val selectingList = ArrayList<Int>()
@@ -22,6 +22,17 @@ class SeatAdapter (
     private val colorBooked = ContextCompat.getColor(context, R.color.gray_dark)
     private val colorSelecting = ContextCompat.getColor(context, R.color.color_selecting)
     private val itemLayout = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, screenWidth / (count * 2 + 1))
+    private val seatNames = ArrayList<String>()
+
+    init {
+        for (i in 0 until seatQuantity) {
+            var s = i / (count * 2) + 65
+            if (s > 90) {
+                s += 6
+            }
+            seatNames.add(s.toChar().toString().plus(i % (count * 2) + 1))
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_rcv_seat, parent, false))
@@ -32,7 +43,6 @@ class SeatAdapter (
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.layoutParams = itemLayout
         val p1 = position * 2
         val p2 = position * 2 + 1
 
@@ -48,15 +58,9 @@ class SeatAdapter (
             }
         }
 
-        var s1: Int = p1 / (count * 2) + 65
-        var s2: Int = p2 / (count * 2) + 65
-        if (s1 > 90) {
-            s1 += 6
-            s2 += 6
-        }
-        holder.tvSeat1.text = s1.toChar().toString().plus(p1 % (count * 2) + 1)
+        holder.tvSeat1.text = seatNames[p1]
         if (p2 < seatQuantity) {
-            holder.tvSeat2.text = s2.toChar().toString().plus(p2 % (count * 2) + 1)
+            holder.tvSeat2.text = seatNames[p2]
             holder.cvSeat2.visibility = View.VISIBLE
             when {
                 selectingList.contains(p2) -> {
@@ -98,10 +102,14 @@ class SeatAdapter (
         }
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvSeat1: TextView = view.findViewById(R.id.tvSeatName1)
-        val cvSeat1: CardView = view.findViewById(R.id.cvSeat1)
-        val tvSeat2: TextView = view.findViewById(R.id.tvSeatName2)
-        val cvSeat2: CardView = view.findViewById(R.id.cvSeat2)
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        internal val tvSeat1: TextView = view.findViewById(R.id.tvSeatName1)
+        internal val cvSeat1: CardView = view.findViewById(R.id.cvSeat1)
+        internal val tvSeat2: TextView = view.findViewById(R.id.tvSeatName2)
+        internal val cvSeat2: CardView = view.findViewById(R.id.cvSeat2)
+
+        init {
+            view.layoutParams = itemLayout
+        }
     }
 }

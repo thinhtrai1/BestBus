@@ -48,8 +48,8 @@ class MyTicketAdapter(private val context: Context, private val mTickets: ArrayL
         }
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvId: TextView = view.findViewById(R.id.tvId)
-        val tvLeave: TextView = view.findViewById(R.id.tvLeave)
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        internal val tvId: TextView = view.findViewById(R.id.tvId)
+        internal val tvLeave: TextView = view.findViewById(R.id.tvLeave)
     }
 }

@@ -42,9 +42,9 @@ class OfferAdapter(private val context: Context, private val mOffers: ArrayList<
         }
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvOff: TextView = view.findViewById(R.id.tvOff)
-        val tvCode: TextView = view.findViewById(R.id.tvCode)
-        val tvCopyCode: TextView = view.findViewById(R.id.tvCopyCode)
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        internal val tvOff: TextView = view.findViewById(R.id.tvOff)
+        internal val tvCode: TextView = view.findViewById(R.id.tvCode)
+        internal val tvCopyCode: TextView = view.findViewById(R.id.tvCopyCode)
     }
 }
