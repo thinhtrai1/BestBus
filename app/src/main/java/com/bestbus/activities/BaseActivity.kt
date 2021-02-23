@@ -1,6 +1,7 @@
 package com.bestbus.activities
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -38,5 +39,15 @@ abstract class BaseActivity : AppCompatActivity() {
         } else {
             showToast(throwable.message)
         }
+    }
+
+    override fun startActivity(intent: Intent) {
+        super.startActivity(intent)
+        overridePendingTransition(R.anim.anim_scale_open, R.anim.anim_scale_exit)
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.anim_scale_open, R.anim.anim_scale_exit)
     }
 }

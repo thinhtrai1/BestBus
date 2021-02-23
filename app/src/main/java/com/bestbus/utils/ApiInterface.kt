@@ -19,7 +19,7 @@ interface ApiInterface {
     @Multipart
     @POST("updateProfile.php")
     fun updateProfile(@Part("userId") userId: RequestBody,
-                      @Part("name") address: RequestBody,
+                      @Part("name") name: RequestBody,
                       @Part("email") contact_no: RequestBody,
                       @Part("phone") password: RequestBody,
                       @Part("password") latitude: RequestBody,

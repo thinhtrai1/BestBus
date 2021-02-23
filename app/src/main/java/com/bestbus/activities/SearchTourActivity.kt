@@ -2,14 +2,13 @@ package com.bestbus.activities
 
 import android.app.DatePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bestbus.R
 import com.bestbus.utils.Constant
 import kotlinx.android.synthetic.main.activity_search_tour.*
 import java.util.*
 
-class SearchTourActivity : AppCompatActivity() {
+class SearchTourActivity : BaseActivity() {
     private val mCalendar: Calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -182,10 +182,6 @@ class LoginActivity : BaseActivity(), Callback<User> {
             b = false
         }
         if (isUpdate) {
-            if (edtPassword.text.toString().trim().isEmpty()) {
-                edtPassword.error = getString(R.string.tv_please_enter_password)
-                b = false
-            }
             if (edtPassword.text.toString().trim() != edtConfirmPassword.text.toString().trim()) {
                 edtConfirmPassword.error = getString(R.string.tv_invalid_confirm_password)
                 b = false

@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:fontFamily="monospace"
     android:gravity="end"
+    android:text="A1"
     android:paddingBottom="@dimen/margin_2.5"
     android:textColor="@color/black"
     android:textSize="@dimen/text_13"

@@ -10,12 +10,13 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bestbus.R
 
-class SeatAdapter (
+class SeatAdapter(
     private val context: Activity,
     private val seatQuantity: Int,
-    private val seatBooked: ArrayList<Int>?,
+    private val seatBooked: ArrayList<Int>,
     count: Int,
-    screenWidth: Int): RecyclerView.Adapter<SeatAdapter.ViewHolder>() {
+    screenWidth: Int
+) : RecyclerView.Adapter<SeatAdapter.ViewHolder>() {
 
     val selectingList = ArrayList<Int>()
     private val colorAvailable = ContextCompat.getColor(context, R.color.gray)
@@ -50,7 +51,7 @@ class SeatAdapter (
             selectingList.contains(p1) -> {
                 holder.cvSeat1.setCardBackgroundColor(colorSelecting)
             }
-            seatBooked != null && seatBooked.contains(p1) -> {
+            seatBooked.contains(p1) -> {
                 holder.cvSeat1.setCardBackgroundColor(colorBooked)
             }
             else -> {
@@ -66,7 +67,7 @@ class SeatAdapter (
                 selectingList.contains(p2) -> {
                     holder.cvSeat2.setCardBackgroundColor(colorSelecting)
                 }
-                seatBooked != null && seatBooked.contains(p2) -> {
+                seatBooked.contains(p2) -> {
                     holder.cvSeat2.setCardBackgroundColor(colorBooked)
                 }
                 else -> {
@@ -78,7 +79,7 @@ class SeatAdapter (
         }
 
         holder.cvSeat1.setOnClickListener {
-            if (seatBooked == null || !seatBooked.contains(p1)) {
+            if (!seatBooked.contains(p1)) {
                 if (selectingList.contains(p1)) {
                     selectingList.remove(p1)
                     holder.cvSeat1.setCardBackgroundColor(colorAvailable)
@@ -90,7 +91,7 @@ class SeatAdapter (
         }
 
         holder.cvSeat2.setOnClickListener {
-            if (seatBooked == null || !seatBooked.contains(p2)) {
+            if (!seatBooked.contains(p2)) {
                 if (selectingList.contains(p2)) {
                     selectingList.remove(p2)
                     holder.cvSeat2.setCardBackgroundColor(colorAvailable)

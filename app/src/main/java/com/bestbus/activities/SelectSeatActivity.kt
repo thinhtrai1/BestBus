@@ -28,7 +28,7 @@ class SelectSeatActivity : BaseActivity() {
         val padding = metrics.widthPixels / (tourData.count * 6)
         rcvSeat.setPadding(padding, 0, padding, 0)
 
-        val adapter = SeatAdapter(this, tourData.seatQuantity, tourData.seatSelected, tourData.count, metrics.widthPixels)
+        val adapter = SeatAdapter(this, tourData.seatQuantity, tourData.seatSelected ?: ArrayList(), tourData.count, metrics.widthPixels)
         rcvSeat.adapter = adapter
         rcvSeat.layoutManager = GridLayoutManager(this, tourData.count)
 

@@ -1,7 +1,9 @@
 package com.bestbus.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Patterns
 import android.view.View
 import com.bestbus.R
 import com.bestbus.models.Ticket
@@ -13,7 +15,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ScanTicketActivity : AppCompatActivity(), ZXingScannerView.ResultHandler, Callback<Ticket> {
+class ScanTicketActivity : BaseActivity(), ZXingScannerView.ResultHandler, Callback<Ticket> {
     private var isScanning = true
 
     override fun onPause() {
@@ -44,6 +46,14 @@ class ScanTicketActivity : AppCompatActivity(), ZXingScannerView.ResultHandler, 
                 scannerView.visibility = View.VISIBLE
                 scannerView.setResultHandler(this)
                 scannerView.startCamera()
+            }
+        }
+
+        tvTicket.setOnClickListener {
+            val m = Patterns.WEB_URL.matcher(tvTicket.text)
+            if (m.find()) {
+                val url: String = m.group()
+                startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse(url)))
             }
         }
     }
